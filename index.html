@@ -595,9 +595,13 @@ function generaPDF(){
         var n=Math.ceil(imgH/pH);
         for(var p=0;p<n;p++){if(p>0)pdf.addPage();pdf.addImage(imgData,'JPEG',0,-(p*pH),pW,imgH);}
       }
-      var blob=pdf.output('blob');
-      var url=URL.createObjectURL(blob);
-      window.open(url,'_blank');
+      // Scarica il PDF — si apre automaticamente con PDF X
+      var nome=(document.getElementById('iNome').value||'Cliente').trim();
+      var nf=nome.replace(/\s+/g,'_').replace(/[^a-zA-Z0-9_]/g,'');
+      var d=new Date();
+      var ds=String(d.getDate()).padStart(2,'0')+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+d.getFullYear();
+      var filename='FVG_'+nf+'_'+ds+'.pdf';
+      pdf.save(filename);
     }).catch(function(err){
       document.body.classList.remove('stampa');
       if(btns)btns.style.display='';
