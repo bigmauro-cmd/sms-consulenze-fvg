@@ -357,7 +357,7 @@ body.stampa #driveModal, body.stampa #drvForm, body.stampa #drvFrame { display:n
 
   <!-- AZIONI -->
   <div class="btns">
-    <button class="btn bp" onclick="generaPDF()">&#128196; Genera PDF &amp; Drive</button>
+    <button class="btn bp" onclick="generaPDF()">&#128196; Visualizza PDF</button>
     <button class="btn bw" onclick="condividiWA()">&#128241; WhatsApp</button>
     <button class="btn be" onclick="apriEmail()">&#9993; E-mail</button>
   </div>
@@ -574,53 +574,36 @@ function chiudiModal(){
 
 // ── GENERA PDF ──
 function generaPDF(){
-  // Applica tema chiaro per la cattura
   document.body.classList.add('stampa');
-  var btns = document.querySelector('.btns');
-  if(btns) btns.style.display='none';
-
-  // Piccolo ritardo per permettere al CSS di applicarsi
+  var btns=document.querySelector('.btns');
+  if(btns)btns.style.display='none';
   setTimeout(function(){
-    html2canvas(document.body, {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: '#ffffff',
-      scrollY: 0,
-      windowWidth: document.body.scrollWidth,
-      windowHeight: document.body.scrollHeight,
-      logging: false
+    html2canvas(document.body,{
+      scale:2,useCORS:true,backgroundColor:'#ffffff',
+      scrollY:0,windowHeight:document.body.scrollHeight,logging:false
     }).then(function(canvas){
-      // Ripristina tema scuro
       document.body.classList.remove('stampa');
-      if(btns) btns.style.display='';
-
-      var jsPDF = window.jspdf.jsPDF;
-      var pdf   = new jsPDF('p','mm','a4');
-      var pW    = 210, pH = 297;
-      var imgH  = canvas.height * pW / canvas.width;
-      var imgData = canvas.toDataURL('image/jpeg', 0.95);
-
-      if(imgH <= pH){
+      if(btns)btns.style.display='';
+      var jsPDF=window.jspdf.jsPDF;
+      var pdf=new jsPDF('p','mm','a4');
+      var pW=210,pH=297;
+      var imgH=canvas.height*pW/canvas.width;
+      var imgData=canvas.toDataURL('image/jpeg',0.95);
+      if(imgH<=pH){
         pdf.addImage(imgData,'JPEG',0,0,pW,imgH);
-      } else {
-        var n = Math.ceil(imgH/pH);
-        for(var p=0; p<n; p++){
-          if(p>0) pdf.addPage();
-          pdf.addImage(imgData,'JPEG',0,-(p*pH),pW,imgH);
-        }
+      }else{
+        var n=Math.ceil(imgH/pH);
+        for(var p=0;p<n;p++){if(p>0)pdf.addPage();pdf.addImage(imgData,'JPEG',0,-(p*pH),pW,imgH);}
       }
-
-      // Apri il PDF in una nuova scheda
-      var blob = pdf.output('blob');
-      var url  = URL.createObjectURL(blob);
+      var blob=pdf.output('blob');
+      var url=URL.createObjectURL(blob);
       window.open(url,'_blank');
-
     }).catch(function(err){
       document.body.classList.remove('stampa');
-      if(btns) btns.style.display='';
+      if(btns)btns.style.display='';
       alert('Errore: '+err.message);
     });
-  }, 300);
+  },300);
 }
 
 
