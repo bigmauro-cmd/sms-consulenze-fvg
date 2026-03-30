@@ -126,107 +126,109 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 @media(min-width:601px)and(max-width:900px){.main{max-width:96%}}
 
 /* PRINT */
-/* ── FORZA SFONDO BIANCO A SCHERMO PRIMA DI STAMPARE ── */
-body.stampa,
-body.stampa .card,
-body.stampa .ch,
-body.stampa .cb,
-body.stampa .warn,
-body.stampa .slog,
-body.stampa .note,
-body.stampa .card-analisi,
-body.stampa .ftr,
-body.stampa .hdr {
-  background:#fff !important;
-  color:#111 !important;
-  border-color:#c8cfe0 !important;
-}
-body.stampa { background:#fff !important; }
-body.stampa .hdr { background:#1a3a8a !important; }
-body.stampa .hdr h1, body.stampa .hdr p { color:#fff !important; }
-body.stampa .badge { background:#e09000 !important; color:#000 !important; }
-body.stampa .ch { background:#eef1f8 !important; }
-body.stampa .ch h2 { color:#2a3560 !important; }
-body.stampa .rl { color:#333 !important; }
-body.stampa .rv { color:#1a6a3a !important; }
-body.stampa .rv.blue { color:#0044aa !important; }
-body.stampa .rv.gold { color:#886600 !important; }
-body.stampa .rv.muted { color:#445 !important; }
-body.stampa .net { background:#e8fff4 !important; border-color:#1a6a3a !important; }
-body.stampa .nv { color:#1a6a3a !important; }
-body.stampa .nl, body.stampa .ns { color:#334 !important; }
-body.stampa .sb { background:#f0f2f8 !important; border-color:#c8cfe0 !important; }
-body.stampa .sl { color:#556 !important; }
-body.stampa .sv { color:#886600 !important; }
-body.stampa .warn { background:#fff8f6 !important; border-color:#e03300 !important; }
-body.stampa .wt { color:#aa2200 !important; }
-body.stampa .warn strong { color:#aa2200 !important; }
-body.stampa .slog { background:#f5f8ff !important; border-color:#8899cc !important; }
-body.stampa .slog q { color:#222 !important; }
-body.stampa .firma { color:#886600 !important; }
-body.stampa .pbox { background:#f0f2f8 !important; border-color:#c8cfe0 !important; }
-body.stampa .pbox-lbl { color:#556 !important; }
-body.stampa .pbox-val { color:#886600 !important; }
-body.stampa .ftr { background:#eef1f8 !important; border-color:#1a3a8a !important; }
-body.stampa .fn { color:#1a1a2e !important; }
-body.stampa .fc { color:#333 !important; }
-body.stampa .fc a { color:#886600 !important; }
-body.stampa .fcp { color:#556 !important; }
-body.stampa .f input { background:#f7f8fb !important; color:#111 !important; border-color:#bbc !important; }
-body.stampa .f label { color:#555 !important; }
-body.stampa .btns { display:none !important; }
-body.stampa #driveModal, body.stampa #drvForm, body.stampa #drvFrame { display:none !important; }
+
+/* Tema bianco applicato prima della stampa */
+body.stampa{background:#fff!important;color:#111!important}
+body.stampa .card,body.stampa .ch,body.stampa .cb{background:#fff!important;color:#111!important}
+body.stampa .hdr{background:#1a3a8a!important}
+body.stampa .hdr h1,body.stampa .badge{color:#fff!important}
+body.stampa .rl,body.stampa .f label{color:#555!important}
+body.stampa .f input{background:#f7f8fb!important;color:#111!important;border-color:#bbc!important}
+body.stampa .rv{color:#1a6a3a!important}
+body.stampa .rv.blue{color:#0044aa!important}
+body.stampa .rv.gold{color:#886600!important}
+body.stampa .rv.muted{color:#445!important}
+body.stampa .net{background:#e8fff4!important;border-color:#1a6a3a!important}
+body.stampa .nv{color:#1a6a3a!important}
+body.stampa .nl,body.stampa .ns{color:#334!important}
+body.stampa .sb{background:#f0f2f8!important;border-color:#c8cfe0!important}
+body.stampa .sv{color:#886600!important}
+body.stampa .sl{color:#556!important}
+body.stampa .warn{background:#fff8f6!important;border-color:#e03300!important}
+body.stampa .wt{color:#aa2200!important}
+body.stampa .slog{background:#f5f8ff!important;border-color:#8899cc!important}
+body.stampa .slog q{color:#222!important}
+body.stampa .firma{color:#886600!important}
+body.stampa .ftr{background:#eef1f8!important;border-color:#1a3a8a!important}
+body.stampa .fn{color:#1a1a2e!important}
+body.stampa .fc,body.stampa .fcp{color:#333!important}
+body.stampa .fc a{color:#886600!important}
+body.stampa .btns{display:none!important}
+body.stampa #driveModal,body.stampa #drvForm{display:none!important}
 
 @page{size:A4 portrait;margin:14mm 15mm}
 @media print{
+  /* ── BASE ── */
   body{background:#fff!important;color:#111!important;font-size:10pt!important}
-  .btns,.note,.no-print{display:none!important}
-  .hdr{background:#1a3a8a!important;padding:10px 14px!important;border-bottom:none!important;margin-bottom:10px}
+  .btns,.note,.no-print,#driveModal,#drvForm,#drvFrame{display:none!important}
+
+  /* ── HEADER ── */
+  .hdr{background:#1a3a8a!important;padding:10px 14px!important;margin-bottom:10px!important;border:none!important}
   .hdr h1{color:#fff!important;font-size:14pt!important}
-  .hdr p{color:#ccd!important;font-size:8pt!important}
-  .badge{background:#e09000!important;color:#000!important;font-size:8pt!important;padding:4px 10px!important}
+  .hdr p{color:#dde!important;font-size:8pt!important}
+  .badge{background:#e09000!important;color:#000!important;font-size:8pt!important;padding:4px 10px!important;border-radius:12px!important}
   .logo-row img{width:50px!important;height:50px!important}
+
+  /* ── LAYOUT ── */
   .main{max-width:100%!important;margin:0!important;padding:0!important;gap:10px!important}
-  /* top3 replaced by single card */
+
+  /* ── CARDS ── */
   .card{border:1px solid #c8cfe0!important;background:#fff!important;border-radius:6px!important;page-break-inside:avoid!important}
   .ch{padding:7px 11px!important;background:#eef1f8!important;border-bottom:1px solid #c8cfe0!important}
-  .ch h2{font-size:9pt!important;color:#2a3560!important}
-  .ci{width:22px!important;height:22px!important;font-size:.75rem!important}
+  .ch h2{font-size:9pt!important;color:#2a3560!important;letter-spacing:.5px!important}
+  .ci{width:20px!important;height:20px!important;font-size:.7rem!important}
   .cb{padding:9px 11px!important;background:#fff!important}
-  .g2{gap:8px!important}
-  .f label{font-size:7pt!important;color:#555!important}
-  .f input{padding:5px 8px!important;font-size:9pt!important;background:#f7f8fb!important;border:1px solid #bbc!important;color:#111!important;border-radius:4px!important}
+
+  /* ── PAGINA 1: INPUT ── */
+  /* dati cliente + impianto nella prima pagina */
+  .g2{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}
+  .f label{font-size:7pt!important;color:#555!important;font-weight:600!important}
+  .f input{padding:5px 8px!important;font-size:9pt!important;background:#f7f8fb!important;border:1px solid #bbc!important;color:#111!important;border-radius:4px!important;width:100%!important}
+
+  /* ── PAGINA 2: RISULTATI ── */
   .card-risultati{page-break-before:always!important}
-  .rr{padding:9px 0!important;border-bottom:1px solid #e8eaf0!important}
+  .rr{padding:9px 0!important;border-bottom:1px solid #e8eaf0!important;display:flex!important;justify-content:space-between!important}
   .rl{font-size:9.5pt!important;color:#333!important}
-  .rv{font-size:11pt!important;color:#1a6a3a!important;font-weight:700!important}
-  .rv.blue{color:#0044aa!important}.rv.gold{color:#886600!important}.rv.muted{color:#445!important}
-  .net{background:#e8fff4!important;border:2px solid #1a6a3a!important;padding:14px!important;margin-top:12px!important}
-  .nl{font-size:8pt!important;color:#334!important}
-  .nv{font-size:24pt!important;color:#1a6a3a!important}
-  .ns{font-size:8.5pt!important;color:#445!important}
-  .sg{gap:8px!important;margin-top:12px!important}
-  .sb{background:#f0f2f8!important;border:1px solid #c8cfe0!important;padding:9px!important}
-  .sl{font-size:7.5pt!important;color:#556!important}.sv{font-size:11pt!important;color:#886600!important}
-  .warn{background:#fff8f6!important;border:1px solid #e03300!important;border-left:4px solid #e03300!important;padding:9px 12px!important;font-size:8.5pt!important;line-height:1.6!important;page-break-inside:avoid!important;margin-top:10px!important}
-  .wt{font-size:9pt!important;color:#aa2200!important;margin-bottom:4px!important}
-  .warn ul{margin:4px 0 0 14px!important}.warn strong{color:#aa2200!important}
-  .slog{background:#f5f8ff!important;border:1px solid #8899cc!important;padding:11px 14px!important;text-align:center!important;page-break-inside:avoid!important;margin-top:10px!important}
-  .slog .ico{font-size:1.1rem!important;margin-bottom:6px!important}
+  .rv{font-size:11pt!important;font-weight:700!important;color:#1a6a3a!important}
+  .rv.blue{color:#0044aa!important}
+  .rv.gold{color:#886600!important}
+  .rv.muted{color:#445!important}
+  .net{background:#e8fff4!important;border:2px solid #1a6a3a!important;border-radius:8px!important;padding:14px!important;text-align:center!important;margin-top:12px!important}
+  .nl{font-size:8pt!important;color:#334!important;letter-spacing:1.5px!important;text-transform:uppercase!important}
+  .nv{font-size:26pt!important;color:#1a6a3a!important;font-family:'Rajdhani',sans-serif!important;font-weight:700!important}
+  .ns{font-size:8.5pt!important;color:#445!important;margin-top:4px!important}
+  .sg{display:grid!important;grid-template-columns:1fr 1fr 1fr!important;gap:8px!important;margin-top:12px!important}
+  .sb{background:#f0f2f8!important;border:1px solid #c8cfe0!important;border-radius:5px!important;padding:9px!important;text-align:center!important}
+  .sl{font-size:7.5pt!important;color:#556!important;text-transform:uppercase!important}
+  .sv{font-size:11pt!important;color:#886600!important;font-weight:700!important;font-family:'Rajdhani',sans-serif!important}
+
+  /* ── AVVISO ── */
+  .warn{background:#fff8f6!important;border:1px solid #e03300!important;border-left:4px solid #e03300!important;padding:9px 12px!important;font-size:8.5pt!important;line-height:1.6!important;page-break-inside:avoid!important;margin-top:10px!important;border-radius:5px!important}
+  .wt{font-size:9pt!important;color:#aa2200!important;font-weight:700!important;margin-bottom:4px!important;text-transform:uppercase!important}
+  .warn ul{margin:4px 0 0 14px!important}
+  .warn strong{color:#aa2200!important}
+  .warn p{color:#333!important}
+
+  /* ── SLOGAN ── */
+  .slog{background:#f5f8ff!important;border:1px solid #8899cc!important;border-radius:6px!important;padding:11px 14px!important;text-align:center!important;page-break-inside:avoid!important;margin-top:10px!important}
+  .slog .ico{font-size:1rem!important;margin-bottom:5px!important;display:block!important}
   .slog q{font-size:9pt!important;color:#222!important;line-height:1.7!important;font-style:italic!important}
   .slog .firma{font-size:8.5pt!important;color:#886600!important;margin-top:6px!important;font-weight:700!important}
-  .card-analisi{page-break-before:always!important;border:1px solid #c8cfe0!important;background:#fff!important;display:block!important}
+
+  /* ── ANALISI — PAGINA 3 (se dati bolletta inseriti) ── */
+  .card-analisi{page-break-before:always!important;display:block!important;border:1px solid #c8cfe0!important;background:#fff!important}
   #boxParam{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;margin-bottom:12px!important}
   .pbox{background:#f0f2f8!important;border:1px solid #c8cfe0!important;border-radius:5px!important;padding:8px!important;text-align:center!important}
-  .pbox-lbl{font-size:7pt!important;color:#556!important;text-transform:uppercase!important;margin-bottom:2px!important}
-  .pbox-val{font-size:10pt!important;color:#886600!important;font-weight:700!important}
+  .pbox-lbl{font-size:7pt!important;color:#556!important;text-transform:uppercase!important}
+  .pbox-val{font-size:10pt!important;color:#886600!important;font-weight:700!important;font-family:'Rajdhani',sans-serif!important}
   .pbox-sub{font-size:6.5pt!important;color:#778!important;margin-top:2px!important}
-  #riepilogoFinale{margin-bottom:10px!important}
-  #riepilogoFinale>div>div{page-break-inside:avoid!important;background:#f8f9fa!important;border-radius:5px!important;margin-bottom:6px!important}
-  #analisiNote{font-size:7pt!important;color:#445!important;background:#f0f5ff!important;border-left:3px solid #6688aa!important;padding:7px 10px!important;margin-top:8px!important}
-  .ftr{padding:9px 14px!important;background:#eef1f8!important;border-top:2px solid #1a3a8a!important;margin-top:14px!important}
-  .fn{font-size:10pt!important;color:#1a1a2e!important;margin-bottom:4px!important}
-  .fc{font-size:8pt!important;gap:12px!important;color:#333!important}
+  #riepilogoFinale>div{display:flex!important;flex-direction:column!important;gap:8px!important}
+  #analisiNote{font-size:7pt!important;color:#445!important;background:#f0f5ff!important;border-left:3px solid #6688aa!important;padding:7px 10px!important;margin-top:8px!important;border-radius:4px!important}
+
+  /* ── FOOTER ── */
+  .ftr{background:#eef1f8!important;border-top:2px solid #1a3a8a!important;padding:9px 14px!important;margin-top:14px!important}
+  .fn{font-size:10pt!important;color:#1a1a2e!important;font-weight:700!important;margin-bottom:4px!important}
+  .fc{font-size:8pt!important;color:#333!important;gap:12px!important;display:flex!important;flex-wrap:wrap!important;justify-content:center!important}
   .fc a{color:#886600!important}
   .fcp{font-size:7pt!important;color:#556!important;margin-top:4px!important}
 }
@@ -572,42 +574,18 @@ function chiudiModal(){
   if(m)m.style.display='none';
 }
 
-// ── GENERA PDF ──
+// ── VISUALIZZA PDF ──
 function generaPDF(){
   document.body.classList.add('stampa');
   var btns=document.querySelector('.btns');
   if(btns)btns.style.display='none';
   setTimeout(function(){
-    html2canvas(document.body,{
-      scale:2,useCORS:true,backgroundColor:'#ffffff',
-      scrollY:0,windowHeight:document.body.scrollHeight,logging:false
-    }).then(function(canvas){
+    window.print();
+    setTimeout(function(){
       document.body.classList.remove('stampa');
       if(btns)btns.style.display='';
-      var jsPDF=window.jspdf.jsPDF;
-      var pdf=new jsPDF('p','mm','a4');
-      var pW=210,pH=297;
-      var imgH=canvas.height*pW/canvas.width;
-      var imgData=canvas.toDataURL('image/jpeg',0.95);
-      if(imgH<=pH){
-        pdf.addImage(imgData,'JPEG',0,0,pW,imgH);
-      }else{
-        var n=Math.ceil(imgH/pH);
-        for(var p=0;p<n;p++){if(p>0)pdf.addPage();pdf.addImage(imgData,'JPEG',0,-(p*pH),pW,imgH);}
-      }
-      // Scarica il PDF — si apre automaticamente con PDF X
-      var nome=(document.getElementById('iNome').value||'Cliente').trim();
-      var nf=nome.replace(/\s+/g,'_').replace(/[^a-zA-Z0-9_]/g,'');
-      var d=new Date();
-      var ds=String(d.getDate()).padStart(2,'0')+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+d.getFullYear();
-      var filename='FVG_'+nf+'_'+ds+'.pdf';
-      pdf.save(filename);
-    }).catch(function(err){
-      document.body.classList.remove('stampa');
-      if(btns)btns.style.display='';
-      alert('Errore: '+err.message);
-    });
-  },300);
+    },1000);
+  },200);
 }
 
 
