@@ -560,6 +560,14 @@ function calcolaAnalisi(kwp,kwh_batt,nettoImpianto,detTot){
 
 // ── GENERA PDF (stampa) ──
 function generaPDF(){
+  // Nome file: AAMMGG-Nome Cliente
+  var nome=(document.getElementById('iNome').value||'Cliente').trim();
+  var d=new Date();
+  var aa=String(d.getFullYear()).slice(2);
+  var mm=String(d.getMonth()+1).padStart(2,'0');
+  var gg=String(d.getDate()).padStart(2,'0');
+  var oldTitle=document.title;
+  document.title=aa+mm+gg+'-'+nome;
   document.body.classList.add('stampa');
   var btns=document.querySelector('.btns');
   if(btns)btns.style.display='none';
@@ -568,6 +576,7 @@ function generaPDF(){
     setTimeout(function(){
       document.body.classList.remove('stampa');
       if(btns)btns.style.display='';
+      document.title=oldTitle;
     },1000);
   },200);
 }
