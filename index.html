@@ -126,6 +126,57 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 @media(min-width:601px)and(max-width:900px){.main{max-width:96%}}
 
 /* PRINT */
+/* ── FORZA SFONDO BIANCO A SCHERMO PRIMA DI STAMPARE ── */
+body.stampa,
+body.stampa .card,
+body.stampa .ch,
+body.stampa .cb,
+body.stampa .warn,
+body.stampa .slog,
+body.stampa .note,
+body.stampa .card-analisi,
+body.stampa .ftr,
+body.stampa .hdr {
+  background:#fff !important;
+  color:#111 !important;
+  border-color:#c8cfe0 !important;
+}
+body.stampa { background:#fff !important; }
+body.stampa .hdr { background:#1a3a8a !important; }
+body.stampa .hdr h1, body.stampa .hdr p { color:#fff !important; }
+body.stampa .badge { background:#e09000 !important; color:#000 !important; }
+body.stampa .ch { background:#eef1f8 !important; }
+body.stampa .ch h2 { color:#2a3560 !important; }
+body.stampa .rl { color:#333 !important; }
+body.stampa .rv { color:#1a6a3a !important; }
+body.stampa .rv.blue { color:#0044aa !important; }
+body.stampa .rv.gold { color:#886600 !important; }
+body.stampa .rv.muted { color:#445 !important; }
+body.stampa .net { background:#e8fff4 !important; border-color:#1a6a3a !important; }
+body.stampa .nv { color:#1a6a3a !important; }
+body.stampa .nl, body.stampa .ns { color:#334 !important; }
+body.stampa .sb { background:#f0f2f8 !important; border-color:#c8cfe0 !important; }
+body.stampa .sl { color:#556 !important; }
+body.stampa .sv { color:#886600 !important; }
+body.stampa .warn { background:#fff8f6 !important; border-color:#e03300 !important; }
+body.stampa .wt { color:#aa2200 !important; }
+body.stampa .warn strong { color:#aa2200 !important; }
+body.stampa .slog { background:#f5f8ff !important; border-color:#8899cc !important; }
+body.stampa .slog q { color:#222 !important; }
+body.stampa .firma { color:#886600 !important; }
+body.stampa .pbox { background:#f0f2f8 !important; border-color:#c8cfe0 !important; }
+body.stampa .pbox-lbl { color:#556 !important; }
+body.stampa .pbox-val { color:#886600 !important; }
+body.stampa .ftr { background:#eef1f8 !important; border-color:#1a3a8a !important; }
+body.stampa .fn { color:#1a1a2e !important; }
+body.stampa .fc { color:#333 !important; }
+body.stampa .fc a { color:#886600 !important; }
+body.stampa .fcp { color:#556 !important; }
+body.stampa .f input { background:#f7f8fb !important; color:#111 !important; border-color:#bbc !important; }
+body.stampa .f label { color:#555 !important; }
+body.stampa .btns { display:none !important; }
+body.stampa #driveModal, body.stampa #drvForm, body.stampa #drvFrame { display:none !important; }
+
 @page{size:A4 portrait;margin:14mm 15mm}
 @media print{
   body{background:#fff!important;color:#111!important;font-size:10pt!important}
@@ -521,73 +572,58 @@ function chiudiModal(){
   if(m)m.style.display='none';
 }
 
-// ── GENERA PDF + DRIVE ──
+// ── GENERA PDF ──
 function generaPDF(){
-  var nome=(document.getElementById('iNome').value||'Cliente').trim();
-  var nf=nome.replace(/\s+/g,'_').replace(/[^a-zA-Z0-9_]/g,'');
-  var d=new Date();
-  var ds=String(d.getDate()).padStart(2,'0')+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+d.getFullYear();
-  var filename='FVG_'+nf+'_'+ds+'.pdf';
+  // Applica tema chiaro per la cattura
+  document.body.classList.add('stampa');
+  var btns = document.querySelector('.btns');
+  if(btns) btns.style.display='none';
 
-  mostraModal('Generazione PDF...','Acquisizione pagina in corso...',true);
-  var btns=document.querySelector('.btns');
-  if(btns) btns.style.visibility='hidden';
-
+  // Piccolo ritardo per permettere al CSS di applicarsi
   setTimeout(function(){
-    html2canvas(document.body,{
-      scale:2, useCORS:true, backgroundColor:'#ffffff',
-      scrollY:-window.scrollY, windowHeight:document.body.scrollHeight
+    html2canvas(document.body, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#ffffff',
+      scrollY: 0,
+      windowWidth: document.body.scrollWidth,
+      windowHeight: document.body.scrollHeight,
+      logging: false
     }).then(function(canvas){
-      if(btns) btns.style.visibility='visible';
-      var jsPDF=window.jspdf.jsPDF;
-      var pdf=new jsPDF('p','mm','a4');
-      var pW=210, pH=297;
-      var imgH=canvas.height*pW/canvas.width;
-      var imgData=canvas.toDataURL('image/jpeg',0.92);
-      if(imgH<=pH){
+      // Ripristina tema scuro
+      document.body.classList.remove('stampa');
+      if(btns) btns.style.display='';
+
+      var jsPDF = window.jspdf.jsPDF;
+      var pdf   = new jsPDF('p','mm','a4');
+      var pW    = 210, pH = 297;
+      var imgH  = canvas.height * pW / canvas.width;
+      var imgData = canvas.toDataURL('image/jpeg', 0.95);
+
+      if(imgH <= pH){
         pdf.addImage(imgData,'JPEG',0,0,pW,imgH);
       } else {
-        var n=Math.ceil(imgH/pH);
-        for(var p=0;p<n;p++){if(p>0)pdf.addPage();pdf.addImage(imgData,'JPEG',0,-(p*pH),pW,imgH);}
+        var n = Math.ceil(imgH/pH);
+        for(var p=0; p<n; p++){
+          if(p>0) pdf.addPage();
+          pdf.addImage(imgData,'JPEG',0,-(p*pH),pW,imgH);
+        }
       }
 
-      // Download locale
-      var blob=pdf.output('blob');
-      var url=URL.createObjectURL(blob);
-      var a=document.createElement('a');a.href=url;a.download=filename;a.click();
-      URL.revokeObjectURL(url);
+      // Apri il PDF in una nuova scheda
+      var blob = pdf.output('blob');
+      var url  = URL.createObjectURL(blob);
+      window.open(url,'_blank');
 
-      // Upload Drive
-      mostraModal('Salvataggio su Drive...','Caricamento in corso...',true);
-      var reader=new FileReader();
-      reader.onload=function(){
-        var b64=reader.result.split(',')[1];
-        var params=new URLSearchParams();
-        params.append('name',filename);
-        params.append('data',b64);
-        // Form submit via iframe — bypassa CORS completamente
-        window._driveFilename = filename;
-        document.getElementById('drvName').value = filename;
-        document.getElementById('drvData').value = b64;
-        document.getElementById('drvForm').submit();
-        // Mostra conferma dopo 5 secondi
-        setTimeout(function(){
-          document.getElementById('dmSpinner').style.display='none';
-          document.getElementById('dmTitle').textContent='\u2705 PDF salvato su Drive!';
-          document.getElementById('dmSub').innerHTML=
-            'File <strong>'+filename+'</strong> salvato nella cartella Preventivi.<br><br>'+
-            '<a href="https://drive.google.com/drive/folders/1oDhzp5-iZIpS7-QdiVjYOPm4Ep4CnCfN" target="_blank" style="display:inline-block;background:#f5a623;color:#000;font-family:Rajdhani,sans-serif;font-weight:700;padding:10px 20px;border-radius:8px;text-decoration:none;margin-bottom:10px">&#128194; Apri cartella Drive</a><br><br>'+
-            '<button onclick="chiudiModal()" style="background:#1a1e28;border:1px solid #2a3045;color:#e8eaf0;border-radius:8px;padding:8px 18px;font-family:Rajdhani,sans-serif;font-weight:700;cursor:pointer">Chiudi</button>';
-        }, 5000);
-      };
-      reader.readAsDataURL(blob);
     }).catch(function(err){
-      if(btns) btns.style.visibility='visible';
-      chiudiModal();
-      alert('Errore PDF: '+err.message);
+      document.body.classList.remove('stampa');
+      if(btns) btns.style.display='';
+      alert('Errore: '+err.message);
     });
-  },400);
+  }, 300);
 }
+
+
 </script>
 <iframe name="drvFrame" id="drvFrame" style="display:none"></iframe>
 <form id="drvForm" method="POST" action="https://script.google.com/macros/s/AKfycbxNgWf-vm86OhfsXPoTSJHaKq20AbCGk1Q4YZ8G8mYYkLzVtEP_6KB4B_lKH51NUHs/exec" target="drvFrame" style="display:none">
