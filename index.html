@@ -609,28 +609,64 @@ function condividiWA(){
 // ── EMAIL ──
 function apriEmail(){
   var d=window._d;
-  var nome=document.getElementById('iNome').value||'Cliente';
+  var nome=(document.getElementById('iNome').value||'Cliente').trim();
   var em=document.getElementById('iEmail').value||'';
-  var subj=encodeURIComponent('Preventivo Incentivi FVG 2026 - '+nome);
+  if(!em){alert('Inserire l\'indirizzo email del cliente nei Dati Cliente.');return;}
+
+  // Nome file uguale al PDF
+  var dt=new Date();
+  var aa=String(dt.getFullYear()).slice(2);
+  var mm=String(dt.getMonth()+1).padStart(2,'0');
+  var gg=String(dt.getDate()).padStart(2,'0');
+  var filename=aa+mm+gg+'-'+nome;
+
+  var subj=encodeURIComponent(filename);
   var body;
   if(d){
     body=encodeURIComponent(
       'Gentile '+nome+',\n\n'+
-      'Riepilogo incentivi FVG 2026:\n\n'+
-      'Contributo FV: € '+Math.round(d.cFV).toLocaleString('it-IT')+'\n'+
-      'Contributo Accumulo: € '+Math.round(d.cACC).toLocaleString('it-IT')+'\n'+
-      'Contributo Totale: € '+Math.round(d.cTOT).toLocaleString('it-IT')+'\n'+
-      'Costo totale impianto: € '+Math.round(d.costo).toLocaleString('it-IT')+'\n'+
-      'Costo dopo contributo: € '+Math.round(d.dopoC).toLocaleString('it-IT')+'\n'+
-      'Detrazione 50%: € '+Math.round(d.det).toLocaleString('it-IT')+'\n'+
-      'COSTO REALE NETTO: € '+Math.round(d.netto).toLocaleString('it-IT')+'\n'+
-      'Risparmio: '+d.perc+'%\n\n'+
-      'Cordiali saluti,\nMauro Scian - SMS Consulenze\n+39 338 7327000\nPordenone, FVG'
+      'In allegato il preventivo incentivi fotovoltaico FVG 2026.\n\n'+
+      'RIEPILOGO INCENTIVI FVG 2026\n'+
+      '━━━━━━━━━━━━━━━━━━━━━━━━━━\n'+
+      'Fotovoltaico installato: '+d.kwp+' kWp\n'+
+      'Accumulo installato: '+d.kwh+' kWh\n\n'+
+      'Contributo FV Regione FVG: \u20ac '+Math.round(d.cFV).toLocaleString('it-IT')+'\n'+
+      'Contributo Accumulo FVG: \u20ac '+Math.round(d.cACC).toLocaleString('it-IT')+'\n'+
+      'CONTRIBUTO TOTALE: \u20ac '+Math.round(d.cTOT).toLocaleString('it-IT')+'\n\n'+
+      'Costo totale impianto: \u20ac '+Math.round(d.costo).toLocaleString('it-IT')+'\n'+
+      'Costo dopo contributo: \u20ac '+Math.round(d.dopoC).toLocaleString('it-IT')+'\n'+
+      'Detrazione 50% (10 anni): \u20ac '+Math.round(d.det).toLocaleString('it-IT')+'\n'+
+      '\u2192 COSTO REALE NETTO: \u20ac '+Math.round(d.netto).toLocaleString('it-IT')+'\n'+
+      'Risparmio effettivo: '+d.perc+'%\n'+
+      'Detrazione annua: \u20ac '+Math.round(d.det/10).toLocaleString('it-IT')+'/anno\n\n'+
+      '\u26a0 Il calcolo ha valore indicativo. Il contributo non \u00e8 automatico e dipende dalla disponibilit\u00e0 del plafond regionale e dalla completezza della documentazione.\n\n'+
+      'Cordiali saluti,\n'+
+      'Mauro Scian\n'+
+      'SMS Consulenze \u2014 Consulenza Energetica FVG\n'+
+      '+39 338 7327000\n'+
+      'Pordenone, FVG'
     );
   }else{
-    body=encodeURIComponent('Gentile '+nome+',\n\nLa contatto per il preventivo incentivi FVG.\n\nMauro Scian - SMS Consulenze');
+    body=encodeURIComponent('Gentile '+nome+',\n\nIn allegato il preventivo incentivi fotovoltaico FVG 2026.\n\nCordiali saluti,\nMauro Scian\nSMS Consulenze\n+39 338 7327000');
   }
-  window.location.href='mailto:'+em+'?subject='+subj+'&body='+body;
+
+  // Genera e scarica il PDF prima di aprire l'email
+  document.body.classList.add('stampa');
+  var btns=document.querySelector('.btns');
+  if(btns)btns.style.display='none';
+  var oldTitle=document.title;
+  document.title=filename;
+
+  setTimeout(function(){
+    window.print();
+    setTimeout(function(){
+      document.body.classList.remove('stampa');
+      if(btns)btns.style.display='';
+      document.title=oldTitle;
+      // Apri client email con oggetto corretto
+      window.location.href='mailto:'+encodeURIComponent(em)+'?subject='+subj+'&body='+body;
+    },1200);
+  },200);
 }
 </script>
 </body>
