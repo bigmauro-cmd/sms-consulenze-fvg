@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>Incentivi FVG 2026 — SMS Consulenze</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -33,19 +31,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
 .ch{display:flex;align-items:center;gap:9px;padding:11px 15px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
 .ci{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.9rem}
-.ig{background:rgba(245,166,35,.15)}
-.ia{background:rgba(46,204,138,.12)}
-.ib{background:rgba(77,184,255,.12)}
-.ip{background:rgba(160,110,255,.12)}
+.ig{background:rgba(245,166,35,.15)}.ia{background:rgba(46,204,138,.12)}.ib{background:rgba(77,184,255,.12)}.ip{background:rgba(160,110,255,.12)}
 .ch h2{font-family:'Rajdhani',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase}
 .cb{padding:14px}
 
 /* INPUT */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
-.g1{display:grid;grid-template-columns:1fr;gap:11px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 .f{display:flex;flex-direction:column;gap:5px}
-.f label{font-size:.71rem;font-weight:600;color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
-.f input{background:var(--bg3);border:1.5px solid var(--border);border-radius:7px;padding:10px 12px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.93rem;outline:none;transition:.2s;width:100%;-moz-appearance:textfield}
+.f label{font-size:.68rem;font-weight:600;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.f input{background:var(--bg3);border:1.5px solid var(--border);border-radius:7px;padding:9px 10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:.2s;width:100%;-moz-appearance:textfield}
 .f input::-webkit-outer-spin-button,.f input::-webkit-inner-spin-button{-webkit-appearance:none}
 .f input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,166,35,.12)}
 .f input::placeholder{color:#3a4260}
@@ -56,14 +51,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .rl{font-size:.84rem;color:var(--muted);flex:1;padding-right:8px}
 .rv{font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:700;color:var(--green);white-space:nowrap}
 .rv.blue{color:var(--blue)}.rv.gold{color:var(--gold)}.rv.muted{color:var(--muted)}
-
-/* NET */
 .net{margin-top:13px;background:linear-gradient(135deg,rgba(46,204,138,.1),rgba(77,184,255,.07));border:1px solid rgba(46,204,138,.25);border-radius:9px;padding:14px;text-align:center}
 .nl{font-size:.7rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;font-weight:600;margin-bottom:4px}
 .nv{font-family:'Rajdhani',sans-serif;font-size:2.3rem;font-weight:700;color:var(--green)}
 .ns{font-size:.74rem;color:var(--muted);margin-top:3px}
-
-/* SAVINGS */
 .sg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:11px}
 .sb{background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:9px;text-align:center}
 .sl{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
@@ -74,13 +65,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .note strong{color:var(--gold)}
 
 /* WARN */
-/* PARAM BOX */
-  .pbox{background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:10px;text-align:center}
-  .pbox-lbl{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
-  .pbox-val{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:700;color:var(--gold)}
-  .pbox-sub{font-size:.64rem;color:var(--muted);margin-top:2px}
-
-  .warn{background:rgba(255,90,60,.07);border:1px solid rgba(255,90,60,.3);border-left:4px solid var(--red);border-radius:9px;padding:13px 15px;font-size:.79rem;color:var(--muted);line-height:1.7}
+.warn{background:rgba(255,90,60,.07);border:1px solid rgba(255,90,60,.3);border-left:4px solid var(--red);border-radius:9px;padding:13px 15px;font-size:.79rem;color:var(--muted);line-height:1.7}
 .wt{font-family:'Rajdhani',sans-serif;font-size:.9rem;font-weight:700;color:#ff7a5c;letter-spacing:.5px;margin-bottom:7px;text-transform:uppercase}
 .warn strong{color:#ffaa90}
 .warn ul{margin:5px 0 0 15px;display:flex;flex-direction:column;gap:3px}
@@ -90,6 +75,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .slog .ico{font-size:1.5rem;margin-bottom:7px;display:block}
 .slog q{font-style:italic;font-size:.89rem;color:var(--text);line-height:1.8;opacity:.9;quotes:none}
 .slog .firma{margin-top:9px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.82rem;color:var(--gold);letter-spacing:1px}
+
+/* ANALISI */
+.card-analisi{display:none}
+.pbox{background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:9px;text-align:center}
+.pbox-lbl{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.pbox-val{font-family:'Rajdhani',sans-serif;font-size:.95rem;font-weight:700;color:var(--gold)}
+.pbox-sub{font-size:.62rem;color:var(--muted);margin-top:1px}
 
 /* BUTTONS */
 .btns{display:flex;gap:8px}
@@ -109,37 +101,40 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .fc a{color:var(--gold);text-decoration:none}
 .fcp{margin-top:7px;font-size:.68rem;color:#3a4155}
 
+/* BOLLETTA LABEL */
+#bollAnnuaLabel{font-size:.72rem;color:var(--gold);margin-top:4px}
+
 /* RESPONSIVE */
 @media(max-width:600px){
   .g2{grid-template-columns:1fr}
+  .g3{grid-template-columns:1fr}
   .sg{grid-template-columns:1fr 1fr}
   .hdr h1{font-size:1.2rem}
   .nv{font-size:1.8rem}
   .main{padding:0 10px 34px;margin:12px auto}
   .btn{font-size:.74rem;padding:10px 7px}
 }
-@media(max-width:360px){
-  .btns{flex-wrap:wrap}
-  .btn{flex:1 1 calc(50% - 4px)}
-  .sg{grid-template-columns:1fr}
-}
+@media(max-width:360px){.btns{flex-wrap:wrap}.btn{flex:1 1 calc(50% - 4px)}}
 @media(min-width:601px)and(max-width:900px){.main{max-width:96%}}
 
-/* PRINT */
-/* Tema bianco per stampa */
+/* ══════════════════════════════════════════
+   STAMPA — tema bianco pre-print
+══════════════════════════════════════════ */
 body.stampa{background:#fff!important;color:#111!important}
-body.stampa .card,body.stampa .ch,body.stampa .cb{background:#fff!important;color:#111!important}
-body.stampa .hdr{background:#fff!important;border-bottom:2px solid #1a3a8a!important}
+body.stampa .card,body.stampa .ch,body.stampa .cb,body.stampa .main,body.stampa .hdr{background:#fff!important}
+body.stampa .hdr{border-bottom:2px solid #1a3a8a!important}
 body.stampa .hdr h1{color:#1a1a2e!important}
 body.stampa .hdr p{color:#555!important}
 body.stampa .badge{background:#e09000!important;color:#000!important}
-body.stampa .ch{background:#f5f7fc!important}
+body.stampa .ch{background:#f5f7fc!important;border-bottom-color:#c8cfe0!important}
 body.stampa .ch h2{color:#2a3560!important}
+body.stampa .card{border-color:#c8cfe0!important}
 body.stampa .rl{color:#333!important}
 body.stampa .rv{color:#1a6a3a!important}
 body.stampa .rv.blue{color:#0044aa!important}
 body.stampa .rv.gold{color:#886600!important}
 body.stampa .rv.muted{color:#445!important}
+body.stampa .rr{border-bottom-color:#eaecf0!important}
 body.stampa .net{background:#edfff5!important;border-color:#1a6a3a!important}
 body.stampa .nv{color:#1a6a3a!important}
 body.stampa .nl,body.stampa .ns{color:#334!important}
@@ -147,9 +142,12 @@ body.stampa .sg{border-color:#c8cfe0!important}
 body.stampa .sb{background:#fff!important;border-color:#c8cfe0!important}
 body.stampa .sv{color:#886600!important}
 body.stampa .sl{color:#556!important}
+body.stampa .note{background:#fffbf0!important;border-color:#ccaa00!important}
+body.stampa .note strong{color:#886600!important}
 body.stampa .warn{background:#fff8f6!important;border-color:#e03300!important}
 body.stampa .wt{color:#aa2200!important}
 body.stampa .warn strong{color:#cc3300!important}
+body.stampa .warn,body.stampa .warn p,body.stampa .warn li{color:#333!important}
 body.stampa .slog{background:#f5f8ff!important;border-color:#c0c8e8!important}
 body.stampa .slog q{color:#222!important}
 body.stampa .firma{color:#886600!important}
@@ -159,126 +157,102 @@ body.stampa .fc,body.stampa .fcp{color:#333!important}
 body.stampa .fc a{color:#886600!important}
 body.stampa .f input{background:#f7f8fb!important;color:#111!important;border-color:#c0c8d8!important}
 body.stampa .f label{color:#556!important}
+body.stampa .pbox{background:#f5f7fc!important;border-color:#c8cfe0!important}
+body.stampa .pbox-lbl{color:#556!important}
+body.stampa .pbox-val{color:#886600!important}
+body.stampa .card-analisi{display:block!important;background:#fff!important;border-color:#c8cfe0!important}
 body.stampa .btns{display:none!important}
-body.stampa #driveModal,body.stampa #drvForm{display:none!important}
-body.stampa .main{background:#fff!important}
+body.stampa #driveModal{display:none!important}
+body.stampa #bollAnnuaLabel{color:#886600!important}
 
-@page{size:A4 portrait;margin:16mm 15mm 14mm 15mm}
+/* ══════════════════════════════════════════
+   PRINT CSS — layout 2 pagine A4
+══════════════════════════════════════════ */
+@page{size:A4 portrait;margin:15mm 15mm}
 @media print{
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
-  body{background:#fff!important;color:#111!important;font-family:'DM Sans',sans-serif!important;font-size:10pt!important}
-  
-  /* Nascondi elementi non necessari */
-  .btns,.note,.no-print,#driveModal,#drvForm,#drvFrame{display:none!important}
+  body{background:#fff!important;color:#111!important;font-size:10pt!important}
+  .btns,.note,.no-print,#driveModal{display:none!important}
 
-  /* HEADER — barra blu con logo */
-  .hdr{
-    display:flex!important;align-items:center!important;justify-content:space-between!important;
-    padding:8px 14px!important;margin-bottom:12px!important;
-    border-bottom:2px solid #1a3a8a!important;background:#fff!important;
-  }
-  .logo-row img{width:48px!important;height:48px!important;border-radius:8px!important}
-  .hdr h1{color:#1a1a2e!important;font-size:14pt!important;font-weight:700!important}
-  .hdr p{color:#555!important;font-size:8pt!important;margin-top:1px!important}
-  .badge{background:#e09000!important;color:#000!important;font-size:8pt!important;padding:4px 10px!important;border-radius:12px!important;font-weight:700!important}
+  /* HEADER */
+  .hdr{padding:8px 12px!important;margin-bottom:10px!important;border-bottom:2px solid #1a3a8a!important;background:#fff!important;display:flex!important;align-items:center!important;justify-content:space-between!important}
+  .logo-row img{width:46px!important;height:46px!important}
+  .hdr h1{color:#1a1a2e!important;font-size:13pt!important;font-weight:700!important}
+  .hdr p{color:#555!important;font-size:7.5pt!important}
+  .badge{background:#e09000!important;color:#000!important;font-size:7.5pt!important;padding:3px 9px!important;border-radius:10px!important}
 
-  /* MAIN layout */
-  .main{max-width:100%!important;margin:0!important;padding:0!important;gap:10px!important;display:flex!important;flex-direction:column!important}
+  /* LAYOUT */
+  .main{max-width:100%!important;margin:0!important;padding:0!important;gap:9px!important;display:flex!important;flex-direction:column!important}
 
   /* CARDS */
-  .card{border:1px solid #c8cfe0!important;background:#fff!important;border-radius:6px!important;page-break-inside:avoid!important;overflow:visible!important}
-  .ch{display:flex!important;align-items:center!important;gap:8px!important;padding:6px 11px!important;background:#f5f7fc!important;border-bottom:1px solid #c8cfe0!important}
-  .ch h2{font-size:8.5pt!important;color:#2a3560!important;letter-spacing:1px!important;font-weight:700!important;text-transform:uppercase!important}
-  .ci{width:20px!important;height:20px!important;border-radius:4px!important;font-size:.65rem!important;display:flex!important;align-items:center!important;justify-content:center!important}
-  .ig{background:rgba(245,166,35,.2)!important}
-  .ia{background:rgba(46,204,138,.2)!important}
-  .ib{background:rgba(77,184,255,.2)!important}
-  .ip{background:rgba(160,110,255,.2)!important}
-  .cb{padding:9px 11px!important;background:#fff!important}
+  .card{border:1px solid #c8cfe0!important;background:#fff!important;border-radius:5px!important;page-break-inside:avoid!important}
+  .ch{padding:5px 10px!important;background:#f5f7fc!important;border-bottom:1px solid #c8cfe0!important;display:flex!important;align-items:center!important;gap:7px!important}
+  .ch h2{font-size:8pt!important;color:#2a3560!important;letter-spacing:.8px!important;font-weight:700!important;text-transform:uppercase!important}
+  .ci{width:18px!important;height:18px!important;font-size:.6rem!important}
+  .cb{padding:8px 10px!important;background:#fff!important}
 
-  /* INPUT FIELDS */
-  .g2{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}
-  .f{display:flex!important;flex-direction:column!important;gap:3px!important}
-  .f label{font-size:7pt!important;color:#556!important;font-weight:600!important;text-transform:uppercase!important;letter-spacing:.3px!important}
-  .f input{
-    padding:5px 8px!important;font-size:9pt!important;
-    background:#fff!important;border:1px solid #c0c8d8!important;
-    color:#111!important;border-radius:4px!important;width:100%!important;
-  }
+  /* INPUTS */
+  .g2{display:grid!important;grid-template-columns:1fr 1fr!important;gap:7px!important}
+  .g3{display:grid!important;grid-template-columns:1fr 1fr 1fr!important;gap:7px!important}
+  .f{gap:2px!important}
+  .f label{font-size:6.5pt!important;color:#556!important;font-weight:600!important}
+  .f input{padding:4px 7px!important;font-size:8.5pt!important;background:#fff!important;border:1px solid #c0c8d8!important;color:#111!important;border-radius:3px!important;width:100%!important}
 
-  /* IMPIANTO — 3 card affiancate */
-  .card .cb > div[style*="grid-template-columns:1fr 1fr 1fr"]{
-    display:grid!important;grid-template-columns:1fr 1fr 1fr!important;gap:8px!important;
-  }
+  /* PAGINA 1 - solo input */
+  /* PAGINA 2 - risultati */
+  .card-risultati{page-break-before:always!important}
+  .rr{padding:7px 0!important;border-bottom:1px solid #eaecf0!important;display:flex!important;justify-content:space-between!important;align-items:center!important}
+  .rl{font-size:9pt!important;color:#333!important}
+  .rv{font-size:10.5pt!important;font-weight:700!important;color:#1a6a3a!important;font-family:'Rajdhani',sans-serif!important}
+  .rv.blue{color:#0044aa!important}.rv.gold{color:#886600!important}.rv.muted{color:#445!important}
 
-  /* PAGINA 2 — RISULTATI */
-  .card-risultati{page-break-before:always!important;border:1px solid #c8cfe0!important;background:#fff!important}
-  .rr{display:flex!important;justify-content:space-between!important;align-items:center!important;padding:8px 0!important;border-bottom:1px solid #eaecf0!important}
-  .rr:last-child{border-bottom:none!important}
-  .rl{font-size:9.5pt!important;color:#333!important}
-  .rv{font-size:11pt!important;font-weight:700!important;color:#1a6a3a!important;font-family:'Rajdhani',sans-serif!important}
-  .rv.blue{color:#0044aa!important}
-  .rv.gold{color:#886600!important}
-  .rv.muted{color:#445!important}
+  /* NET BOX */
+  .net{background:#edfff5!important;border:1.5px solid #1a6a3a!important;border-radius:6px!important;padding:12px!important;text-align:center!important;margin-top:10px!important}
+  .nl{font-size:7pt!important;color:#334!important;letter-spacing:1.5px!important;text-transform:uppercase!important;font-weight:600!important}
+  .nv{font-size:24pt!important;color:#1a6a3a!important;font-family:'Rajdhani',sans-serif!important;font-weight:700!important}
+  .ns{font-size:8pt!important;color:#445!important;margin-top:3px!important}
 
-  /* BOX COSTO NETTO */
-  .net{
-    background:#edfff5!important;border:1.5px solid #1a6a3a!important;
-    border-radius:8px!important;padding:14px!important;text-align:center!important;margin-top:12px!important;
-  }
-  .nl{font-size:7.5pt!important;color:#334!important;letter-spacing:2px!important;text-transform:uppercase!important;font-weight:600!important;margin-bottom:4px!important}
-  .nv{font-size:28pt!important;color:#1a6a3a!important;font-family:'Rajdhani',sans-serif!important;font-weight:700!important}
-  .ns{font-size:8.5pt!important;color:#445!important;margin-top:3px!important}
-
-  /* BOX RISPARMIO 3 CELLE */
-  .sg{display:grid!important;grid-template-columns:1fr 1fr 1fr!important;gap:0!important;margin-top:10px!important;border:1px solid #c8cfe0!important;border-radius:6px!important;overflow:hidden!important}
-  .sb{padding:10px!important;text-align:center!important;background:#fff!important;border-right:1px solid #c8cfe0!important}
+  /* 3 BOX RISPARMIO */
+  .sg{display:grid!important;grid-template-columns:1fr 1fr 1fr!important;gap:0!important;margin-top:9px!important;border:1px solid #c8cfe0!important;border-radius:5px!important;overflow:hidden!important}
+  .sb{padding:8px!important;text-align:center!important;background:#fff!important;border-right:1px solid #c8cfe0!important}
   .sb:last-child{border-right:none!important}
-  .sl{font-size:7pt!important;color:#556!important;text-transform:uppercase!important;letter-spacing:.5px!important;margin-bottom:3px!important}
-  .sv{font-size:12pt!important;color:#886600!important;font-weight:700!important;font-family:'Rajdhani',sans-serif!important}
+  .sl{font-size:6.5pt!important;color:#556!important;text-transform:uppercase!important;letter-spacing:.4px!important;margin-bottom:2px!important}
+  .sv{font-size:11pt!important;color:#886600!important;font-weight:700!important;font-family:'Rajdhani',sans-serif!important}
 
-  /* AVVISO */
-  .warn{
-    background:#fff8f6!important;border:1px solid #e03300!important;
-    border-left:4px solid #e03300!important;border-radius:5px!important;
-    padding:9px 12px!important;font-size:8.5pt!important;line-height:1.6!important;
-    page-break-inside:avoid!important;margin-top:10px!important;
-  }
-  .wt{font-size:9pt!important;color:#aa2200!important;font-weight:700!important;margin-bottom:5px!important;text-transform:uppercase!important}
-  .warn p{color:#333!important;margin-bottom:4px!important}
-  .warn ul{margin-left:14px!important;color:#333!important}
-  .warn li{margin-bottom:2px!important}
+  /* WARN */
+  .warn{background:#fff8f6!important;border:1px solid #e03300!important;border-left:3px solid #e03300!important;border-radius:4px!important;padding:8px 10px!important;font-size:8pt!important;line-height:1.5!important;page-break-inside:avoid!important;margin-top:8px!important}
+  .wt{font-size:8.5pt!important;color:#aa2200!important;font-weight:700!important;margin-bottom:3px!important;text-transform:uppercase!important}
+  .warn p,.warn li{color:#333!important}
+  .warn ul{margin-left:12px!important}
   .warn strong{color:#cc3300!important}
 
   /* SLOGAN */
-  .slog{
-    background:#f5f8ff!important;border:1px solid #c0c8e8!important;
-    border-radius:6px!important;padding:12px 14px!important;
-    text-align:center!important;page-break-inside:avoid!important;margin-top:10px!important;
-  }
-  .slog .ico{font-size:1rem!important;margin-bottom:5px!important;display:block!important}
-  .slog q{font-size:9pt!important;color:#222!important;line-height:1.7!important;font-style:italic!important;quotes:none!important}
-  .slog .firma{font-size:8.5pt!important;color:#886600!important;margin-top:6px!important;font-weight:700!important}
+  .slog{background:#f5f8ff!important;border:1px solid #c0c8e8!important;border-radius:5px!important;padding:10px 12px!important;text-align:center!important;page-break-inside:avoid!important;margin-top:8px!important}
+  .slog .ico{font-size:.9rem!important;margin-bottom:4px!important;display:block!important}
+  .slog q{font-size:8.5pt!important;color:#222!important;line-height:1.6!important;font-style:italic!important;quotes:none!important}
+  .slog .firma{font-size:8pt!important;color:#886600!important;margin-top:5px!important;font-weight:700!important}
+
+  /* ANALISI — totali 10 anni (stessa pagina 2, dopo slogan) */
+  .card-analisi{display:block!important;border:1px solid #c8cfe0!important;background:#fff!important;margin-top:8px!important;page-break-inside:avoid!important}
+  #boxParam{display:none!important}
+  #analisiNote{display:none!important}
+  #riepilogoFinale>div{display:flex!important;flex-direction:column!important;gap:6px!important}
+  #riepilogoFinale [style*="font-size:1.9rem"]{font-size:13pt!important;font-weight:700!important}
+  #riepilogoFinale [style*="font-size:.7rem"]{font-size:7pt!important}
+  #riepilogoFinale [style*="font-size:.82rem"]{font-size:7.5pt!important;color:#334!important}
+  #riepilogoFinale>div>div{page-break-inside:avoid!important}
+
+  /* PBOX nascosti nel PDF */
+  .pbox{background:#f5f7fc!important;border:1px solid #c8cfe0!important}
+  .pbox-lbl{font-size:6.5pt!important;color:#556!important}
+  .pbox-val{font-size:9pt!important;color:#886600!important;font-weight:700!important}
 
   /* FOOTER */
-  .ftr{
-    background:#f5f7fc!important;border-top:2px solid #1a3a8a!important;
-    padding:9px 14px!important;margin-top:14px!important;text-align:center!important;
-  }
-  .fn{font-size:10pt!important;color:#1a1a2e!important;font-weight:700!important;margin-bottom:4px!important}
-  .fc{font-size:8pt!important;color:#333!important;gap:14px!important;display:flex!important;flex-wrap:wrap!important;justify-content:center!important}
+  .ftr{background:#f5f7fc!important;border-top:2px solid #1a3a8a!important;padding:8px 12px!important;margin-top:12px!important;text-align:center!important}
+  .fn{font-size:9.5pt!important;color:#1a1a2e!important;font-weight:700!important;margin-bottom:3px!important}
+  .fc{font-size:7.5pt!important;color:#333!important;gap:12px!important;display:flex!important;flex-wrap:wrap!important;justify-content:center!important}
   .fc a{color:#886600!important;text-decoration:none!important}
-  .fcp{font-size:6.5pt!important;color:#778!important;margin-top:4px!important}
-
-  /* ANALISI 10 ANNI — pagina 3 se presente */
-  .card-analisi{page-break-before:always!important;display:block!important;border:1px solid #c8cfe0!important;background:#fff!important}
-  #boxParam{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;margin-bottom:12px!important}
-  .pbox{background:#f5f7fc!important;border:1px solid #c8cfe0!important;border-radius:5px!important;padding:8px!important;text-align:center!important}
-  .pbox-lbl{font-size:7pt!important;color:#556!important;text-transform:uppercase!important;margin-bottom:2px!important}
-  .pbox-val{font-size:10pt!important;color:#886600!important;font-weight:700!important;font-family:'Rajdhani',sans-serif!important}
-  .pbox-sub{font-size:6.5pt!important;color:#778!important;margin-top:2px!important}
-  #riepilogoFinale>div{display:flex!important;flex-direction:column!important;gap:8px!important}
-  #analisiNote{font-size:7pt!important;color:#445!important;background:#f0f5ff!important;border-left:3px solid #6688aa!important;padding:7px 10px!important;margin-top:8px!important;border-radius:4px!important;line-height:1.5!important}
+  .fcp{font-size:6pt!important;color:#778!important;margin-top:3px!important}
 }
 </style>
 </head>
@@ -302,50 +276,45 @@ body.stampa .main{background:#fff!important}
     <div class="ch"><div class="ci ip">&#128100;</div><h2>Dati Cliente</h2></div>
     <div class="cb">
       <div class="g2">
-        <div class="f"><label>Nome e Cognome</label><input type="text" id="iNome" placeholder="Es. Mario Rossi" oninput="calcola()" onchange="calcola()" onkeyup="calcola()" onblur="calcola()"></div>
-        <div class="f"><label>Cellulare</label><input type="tel" id="iCell" placeholder="+39 333 1234567" oninput="calcola()" onchange="calcola()" onkeyup="calcola()" onblur="calcola()"></div>
-        <div class="f" style="grid-column:1/-1"><label>E-mail cliente</label><input type="email" id="iEmail" placeholder="mario.rossi@email.it" oninput="calcola()" onchange="calcola()" onkeyup="calcola()" onblur="calcola()"></div>
-        <div class="f"><label>KWh Annui (bolletta)</label><input type="number" id="iBollKwh" placeholder="Es. 3000" min="0" inputmode="numeric" oninput="calcola()" onchange="calcola()" onkeyup="calcola()" onblur="calcola()"></div>
-        <div class="f"><label>KWh Fatturati in Bolletta</label><input type="number" id="iBollKwhFatt" placeholder="Es. 2800" min="0" inputmode="numeric" oninput="calcola()" onchange="calcola()" onkeyup="calcola()" onblur="calcola()"></div>
-        <div class="f" style="grid-column:1/-1">
-          <label>Totale Bolletta Attuale (&#8364;)</label>
-          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-            <input type="number" id="iBollEuro" placeholder="Es. 150" min="0" inputmode="decimal" style="flex:1;min-width:120px" oninput="calcola()" onchange="calcola()" onkeyup="calcola()" onblur="calcola()">
-            <div style="display:flex;gap:14px;align-items:center">
-              <label style="display:flex;align-items:center;gap:6px;cursor:pointer;text-transform:none;font-size:.85rem;letter-spacing:0;color:var(--text);font-weight:500">
-                <input type="radio" id="rMensile" name="rBoll" value="12" checked onchange="calcola()" style="accent-color:var(--gold);width:16px;height:16px;cursor:pointer">
-                Mensile
-              </label>
-              <label style="display:flex;align-items:center;gap:6px;cursor:pointer;text-transform:none;font-size:.85rem;letter-spacing:0;color:var(--text);font-weight:500">
-                <input type="radio" id="rBimest" name="rBoll" value="6" onchange="calcola()" style="accent-color:var(--gold);width:16px;height:16px;cursor:pointer">
-                Bimestrale
-              </label>
-            </div>
-          </div>
-          <div id="bollAnnuaLabel" style="font-size:.72rem;color:var(--gold);margin-top:4px"></div>
-        </div>
+        <div class="f"><label>Nome e Cognome</label><input type="text" id="iNome" placeholder="Es. Mario Rossi" oninput="calcola()" onchange="calcola()" onblur="calcola()"></div>
+        <div class="f"><label>Cellulare</label><input type="tel" id="iCell" placeholder="+39 333 1234567" oninput="calcola()" onchange="calcola()" onblur="calcola()"></div>
+        <div class="f" style="grid-column:1/-1"><label>E-mail cliente</label><input type="email" id="iEmail" placeholder="mario.rossi@email.it"></div>
       </div>
     </div>
   </div>
 
-  <!-- FV + ACC + COSTO affiancati -->
-  <div class="top3">
-    <div class="card">
-      <div class="ch"><div class="ci ig">&#9889;</div><h2>Fotovoltaico</h2></div>
-      <div class="cb">
-        <div class="f"><label>KWp Installati</label><input type="number" id="iKwp" placeholder="Es. 6" min="0" step="0.1" inputmode="decimal" pattern="[0-9]*" oninput="calcola()" onchange="calcola()" onkeyup="calcola()" onblur="calcola()"></div>
+  <!-- IMPIANTO — 3 input su una riga -->
+  <div class="card">
+    <div class="ch"><div class="ci ig">&#9889;</div><h2>Impianto</h2></div>
+    <div class="cb">
+      <div class="g3">
+        <div class="f"><label>&#9889; KWp FV</label><input type="number" id="iKwp" placeholder="Es. 6" min="0" step="0.1" inputmode="decimal" oninput="calcola()" onchange="calcola()" onblur="calcola()"></div>
+        <div class="f"><label>&#128267; KWh Accumulo</label><input type="number" id="iKwh" placeholder="Es. 10" min="0" step="0.5" inputmode="decimal" oninput="calcola()" onchange="calcola()" onblur="calcola()"></div>
+        <div class="f"><label>&#128182; Costo Totale (&#8364;)</label><input type="number" id="iCosto" placeholder="Es. 13000" min="0" inputmode="numeric" oninput="calcola()" onchange="calcola()" onblur="calcola()"></div>
       </div>
     </div>
-    <div class="card">
-      <div class="ch"><div class="ci ia">&#128267;</div><h2>Accumulo</h2></div>
-      <div class="cb">
-        <div class="f"><label>KWh Installati</label><input type="number" id="iKwh" placeholder="Es. 10" min="0" step="0.5" inputmode="decimal" pattern="[0-9]*" oninput="calcola()" onchange="calcola()" onkeyup="calcola()" onblur="calcola()"></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="ch"><div class="ci ig">&#128182;</div><h2>Costo Totale</h2></div>
-      <div class="cb">
-        <div class="f"><label>Costo Impianto (&#8364;)</label><input type="number" id="iCosto" placeholder="Es. 13000" min="0" inputmode="numeric" pattern="[0-9]*" oninput="calcola()" onchange="calcola()" onkeyup="calcola()" onblur="calcola()"></div>
+  </div>
+
+  <!-- DATI BOLLETTA -->
+  <div class="card">
+    <div class="ch"><div class="ci ib">&#128267;</div><h2>Dati Bolletta</h2></div>
+    <div class="cb">
+      <div class="g2">
+        <div class="f"><label>KWh Annui (bolletta)</label><input type="number" id="iBollKwh" placeholder="Es. 3000" min="0" inputmode="numeric" oninput="calcola()" onchange="calcola()" onblur="calcola()"></div>
+        <div class="f"><label>KWh Fatturati</label><input type="number" id="iBollKwhFatt" placeholder="Es. 2800" min="0" inputmode="numeric" oninput="calcola()" onchange="calcola()" onblur="calcola()"></div>
+        <div class="f" style="grid-column:1/-1">
+          <label>Totale Bolletta Attuale (&#8364;)</label>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <input type="number" id="iBollEuro" placeholder="Es. 150" min="0" inputmode="decimal" style="flex:1;min-width:100px" oninput="calcola()" onchange="calcola()" onblur="calcola()">
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;text-transform:none;font-size:.85rem;letter-spacing:0;color:var(--text);font-weight:500">
+              <input type="radio" id="rMensile" name="rBoll" value="12" checked onchange="calcola()" style="accent-color:var(--gold);width:15px;height:15px"> Mensile
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;text-transform:none;font-size:.85rem;letter-spacing:0;color:var(--text);font-weight:500">
+              <input type="radio" id="rBimest" name="rBoll" value="6" onchange="calcola()" style="accent-color:var(--gold);width:15px;height:15px"> Bimestrale
+            </label>
+          </div>
+          <div id="bollAnnuaLabel"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -353,8 +322,8 @@ body.stampa .main{background:#fff!important}
   <!-- NOTE ALIQUOTE -->
   <div class="note">
     <strong>&#128203; Aliquote FVG 2026:</strong>
-    Fotovoltaico <strong>&#8364;&nbsp;1.200/kWp</strong> (max 6 kWp = max &#8364;&nbsp;7.200) &nbsp;&#183;&nbsp;
-    Accumulo <strong>&#8364;&nbsp;452/kWh</strong> (max 12 kWh = max &#8364;&nbsp;5.424) &nbsp;&#183;&nbsp;
+    FV <strong>&#8364;&nbsp;1.200/kWp</strong> (max 6 kWp = &#8364;&nbsp;7.200) &nbsp;&#183;&nbsp;
+    Accumulo <strong>&#8364;&nbsp;452/kWh</strong> (max 12 kWh = &#8364;&nbsp;5.424) &nbsp;&#183;&nbsp;
     <strong>Detrazione 50%</strong> sul residuo (10 anni)
   </div>
 
@@ -381,40 +350,6 @@ body.stampa .main{background:#fff!important}
     </div>
   </div>
 
-  <!-- ANALISI ENERGETICA -->
-  <div class="card card-analisi" id="cardAnalisi" style="display:none">
-    <div class="ch"><div class="ci ig">&#128269;</div><h2>Analisi Energetica &amp; Proiezione 10 Anni</h2></div>
-    <div class="cb">
-
-      <!-- BOX PARAMETRI -->
-      <div id="boxParam" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px"></div>
-
-      <!-- TABELLA PROIEZIONE -->
-      <p style="font-size:.78rem;color:var(--muted);margin-bottom:8px">
-        Confronto spesa energetica <strong style="color:#ff7a5c">senza impianto</strong> vs
-        <strong style="color:var(--blue)">con impianto FV</strong> &mdash;
-        aumento materia prima <strong style="color:var(--gold)">+3%/anno</strong> &bull;
-        PUN Index GME medio feb-mar&nbsp;2026 maggiorato 30%
-      </p>
-      <div style="overflow-x:auto">
-        <table id="tAnalisi" style="width:100%;border-collapse:collapse;font-size:.8rem">
-          <thead>
-            <tr style="background:rgba(77,184,255,.08);border-bottom:1px solid var(--border)">
-              <th style="padding:7px 5px;text-align:left;font-family:'Rajdhani',sans-serif;font-size:.72rem;letter-spacing:.5px;color:var(--muted)">ANNO</th>
-              <th style="padding:7px 5px;text-align:right;font-family:'Rajdhani',sans-serif;font-size:.72rem;letter-spacing:.5px;color:#ff7a5c">SENZA FV<br><span style="font-weight:400;font-size:.65rem">(bolletta)</span></th>
-              <th style="padding:7px 5px;text-align:right;font-family:'Rajdhani',sans-serif;font-size:.72rem;letter-spacing:.5px;color:var(--blue)">CON FV<br><span style="font-weight:400;font-size:.65rem">(energia residua)</span></th>
-              <th style="padding:7px 5px;text-align:right;font-family:'Rajdhani',sans-serif;font-size:.72rem;letter-spacing:.5px;color:#2ecc8a">RICAVO GSE<br><span style="font-weight:400;font-size:.65rem">(immissione)</span></th>
-              <th style="padding:7px 5px;text-align:right;font-family:'Rajdhani',sans-serif;font-size:.72rem;letter-spacing:.5px;color:var(--green)">RISPARMIO<br><span style="font-weight:400;font-size:.65rem">netto anno</span></th>
-            </tr>
-          </thead>
-          <tbody id="tBodyA"></tbody>
-          <tfoot id="tFootA"></tfoot>
-        </table>
-      </div>
-      <div id="analisiNote" style="margin-top:10px;font-size:.72rem;color:var(--muted);line-height:1.6;background:rgba(77,184,255,.05);border-left:3px solid var(--blue);padding:8px 10px;border-radius:4px"></div>
-    </div>
-  </div>
-
   <!-- AVVISO -->
   <div class="warn">
     <div class="wt">&#9888; IMPORTANTE &mdash; Informativa sul Contributo</div>
@@ -436,83 +371,13 @@ body.stampa .main{background:#fff!important}
     <div class="firma">&mdash; SMS Consulenze</div>
   </div>
 
-  <!-- ANALISI ENERGETICA -->
+  <!-- ANALISI ENERGETICA (visibile solo se dati bolletta inseriti) -->
   <div class="card card-analisi" id="cardAnalisi" style="display:none">
-    <div class="ch"><div class="ci ig">&#128269;</div><h2>Analisi Energetica &amp; Proiezione 10 Anni</h2></div>
+    <div class="ch"><div class="ci ig">&#128200;</div><h2>Proiezione 10 Anni</h2></div>
     <div class="cb">
-
-      <!-- BOX PARAMETRI -->
       <div id="boxParam" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px"></div>
-
-      <!-- TABELLA PROIEZIONE -->
-      <p style="font-size:.78rem;color:var(--muted);margin-bottom:8px">
-        Confronto spesa energetica <strong style="color:#ff7a5c">senza impianto</strong> vs
-        <strong style="color:var(--blue)">con impianto FV</strong> &mdash;
-        aumento materia prima <strong style="color:var(--gold)">+3%/anno</strong> &bull;
-        PUN Index GME medio feb-mar&nbsp;2026 maggiorato 30%
-      </p>
-      <div style="overflow-x:auto">
-        <table id="tAnalisi" style="width:100%;border-collapse:collapse;font-size:.8rem">
-          <thead>
-            <tr style="background:rgba(77,184,255,.08);border-bottom:1px solid var(--border)">
-              <th style="padding:7px 5px;text-align:left;font-family:'Rajdhani',sans-serif;font-size:.72rem;letter-spacing:.5px;color:var(--muted)">ANNO</th>
-              <th style="padding:7px 5px;text-align:right;font-family:'Rajdhani',sans-serif;font-size:.72rem;letter-spacing:.5px;color:#ff7a5c">SENZA FV<br><span style="font-weight:400;font-size:.65rem">(bolletta)</span></th>
-              <th style="padding:7px 5px;text-align:right;font-family:'Rajdhani',sans-serif;font-size:.72rem;letter-spacing:.5px;color:var(--blue)">CON FV<br><span style="font-weight:400;font-size:.65rem">(energia residua)</span></th>
-              <th style="padding:7px 5px;text-align:right;font-family:'Rajdhani',sans-serif;font-size:.72rem;letter-spacing:.5px;color:#2ecc8a">RICAVO GSE<br><span style="font-weight:400;font-size:.65rem">(immissione)</span></th>
-              <th style="padding:7px 5px;text-align:right;font-family:'Rajdhani',sans-serif;font-size:.72rem;letter-spacing:.5px;color:var(--green)">RISPARMIO<br><span style="font-weight:400;font-size:.65rem">netto anno</span></th>
-            </tr>
-          </thead>
-          <tbody id="tBodyA"></tbody>
-          <tfoot id="tFootA"></tfoot>
-        </table>
-      </div>
+      <div id="riepilogoFinale"></div>
       <div id="analisiNote" style="margin-top:10px;font-size:.72rem;color:var(--muted);line-height:1.6;background:rgba(77,184,255,.05);border-left:3px solid var(--blue);padding:8px 10px;border-radius:4px"></div>
-    </div>
-  </div>
-
-  <!-- AVVISO -->
-  <div class="warn">
-    <div class="wt">&#9888; IMPORTANTE &mdash; Informativa sul Contributo</div>
-    <p>L'erogazione del contributo regionale <strong>non &egrave; automatica</strong>. L'importo potrebbe essere <strong>inferiore o non concesso</strong> in caso di:</p>
-    <ul>
-      <li>Documentazione incompleta o non conforme</li>
-      <li>Esaurimento del <strong>plafond regionale</strong> alla data di presentazione</li>
-      <li>Non rispetto dei requisiti tecnici o temporali del bando</li>
-    </ul>
-    <p style="margin-top:5px">Calcolo a valore puramente <strong>indicativo e informativo</strong>.</p>
-  </div>
-
-  <!-- SLOGAN -->
-  <div class="slog">
-    <span class="ico">&#128172;</span>
-    <p><q>Le dico una cosa molto semplice&hellip; l'impianto lo fanno in tanti.<br>
-    Ma ottenere davvero il contributo senza errori, quello lo fanno in pochi.<br>
-    Io la seguo in tutta la pratica, cos&igrave; lei ha la sicurezza di ottenere tutto quello che le spetta.</q></p>
-    <div class="firma">&mdash; SMS Consulenze</div>
-  </div>
-
-  <!-- PROIEZIONE 10 ANNI -->
-  <div class="card card-proiezione" id="cardProiezione" style="display:none">
-    <div class="ch"><div class="ci ig">&#128200;</div><h2>Proiezione Costi 10 Anni</h2></div>
-    <div class="cb">
-      <p style="font-size:.78rem;color:var(--muted);margin-bottom:10px">
-        Confronto spesa energetica con e senza impianto fotovoltaico &mdash; aumento costo energia <strong style="color:var(--gold)">+3%/anno</strong>
-      </p>
-      <div style="overflow-x:auto">
-        <table id="tProiezione" style="width:100%;border-collapse:collapse;font-size:.8rem">
-          <thead>
-            <tr style="background:rgba(77,184,255,.1);border-bottom:1px solid var(--border)">
-              <th style="padding:7px 6px;text-align:left;color:var(--muted);font-family:'Rajdhani',sans-serif;letter-spacing:.5px;font-size:.75rem">ANNO</th>
-              <th style="padding:7px 6px;text-align:right;color:#ff7a5c;font-family:'Rajdhani',sans-serif;letter-spacing:.5px;font-size:.75rem">SENZA IMPIANTO</th>
-              <th style="padding:7px 6px;text-align:right;color:var(--blue);font-family:'Rajdhani',sans-serif;letter-spacing:.5px;font-size:.75rem">CON IMPIANTO</th>
-              <th style="padding:7px 6px;text-align:right;color:var(--green);font-family:'Rajdhani',sans-serif;letter-spacing:.5px;font-size:.75rem">RISPARMIO</th>
-            </tr>
-          </thead>
-          <tbody id="tBody"></tbody>
-          <tfoot id="tFoot"></tfoot>
-        </table>
-      </div>
-      <div id="proiezioneNote" style="margin-top:10px;font-size:.73rem;color:var(--muted);line-height:1.5"></div>
     </div>
   </div>
 
@@ -536,226 +401,165 @@ body.stampa .main{background:#fff!important}
 </footer>
 
 <script>
-// ── Listener universale per desktop + mobile + tablet ──
-function attachCalcola() {
-  var ids = ['iNome','iCell','iEmail','iKwp','iKwh','iCosto','iBollKwh','iBollKwhFatt','iBollEuro'];
-  // radio buttons
-  ['rMensile','rBimest'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el) el.addEventListener('change', calcola);
-  });
-  ids.forEach(function(id) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    ['input','change','keyup','keydown','paste','blur','touchend'].forEach(function(ev) {
-      el.addEventListener(ev, function(){ setTimeout(calcola, 50); }, {passive:true});
-    });
-  });
-}
-document.addEventListener('DOMContentLoaded', attachCalcola);
-window.addEventListener('load', function(){ attachCalcola(); calcola(); });
-
-// Email costruita via JS per evitare interferenze esterne
+// ── EMAIL VIA JS (no Cloudflare) ──
 (function(){
-  var e = String.fromCharCode(115,99,105,97,110,109,97,117,114,111,46,115,101,114,118,105,122,105,64,103,109,97,105,108,46,99,111,109);
-  var el = document.getElementById('fEmail');
-  if(el) el.innerHTML = '&#9993; <a href="mailto:' + e + '">' + e + '</a>';
+  var e=String.fromCharCode(115,99,105,97,110,109,97,117,114,111,46,115,101,114,118,105,122,105,64,103,109,97,105,108,46,99,111,109);
+  var el=document.getElementById('fEmail');
+  if(el)el.innerHTML='&#9993; <a href="mailto:'+e+'">'+e+'</a>';
 })();
 
-// ── COSTANTI FVG 2026 ──
-var T_KWP=1200, MC_FV=7200;
-var T_KWH=452,  MC_ACC=5424;
+// ── LISTENERS MOBILE ──
+function attachCalcola(){
+  var ids=['iNome','iCell','iEmail','iKwp','iKwh','iCosto','iBollKwh','iBollKwhFatt','iBollEuro'];
+  ids.forEach(function(id){
+    var el=document.getElementById(id);
+    if(!el)return;
+    ['input','change','keyup','blur'].forEach(function(ev){
+      el.addEventListener(ev,function(){setTimeout(calcola,50);},{passive:true});
+    });
+  });
+  ['rMensile','rBimest'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el)el.addEventListener('change',calcola);
+  });
+}
+document.addEventListener('DOMContentLoaded',attachCalcola);
+window.addEventListener('load',function(){attachCalcola();calcola();});
 
-function euro(n){ return '€ ' + Math.round(n).toLocaleString('it-IT'); }
-function out(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; }
+// ── COSTANTI ──
+var T_KWP=1200,MC_FV=7200,T_KWH=452,MC_ACC=5424;
+var PUN_MEDIO=0.1144,PUN_MAGG=0.1144*1.30,PROD_KWP=1150,AUMENTO_MP=0.03;
 
+function euro(n){return '€ '+Math.round(n).toLocaleString('it-IT');}
+function fmt3(n){return (n<0?'-':'')+'€ '+Math.abs(Math.round(n)).toLocaleString('it-IT');}
+function pct(n){return (n*100).toFixed(1)+'%';}
+function out(id,v){var e=document.getElementById(id);if(e)e.textContent=v;}
+
+// ── CALCOLO PRINCIPALE ──
 function calcola(){
-  var kwp   = parseFloat(document.getElementById('iKwp').value)   || 0;
-  var kwh   = parseFloat(document.getElementById('iKwh').value)   || 0;
-  var costo = parseFloat(document.getElementById('iCosto').value) || 0;
+  var kwp  =parseFloat(document.getElementById('iKwp').value)||0;
+  var kwh  =parseFloat(document.getElementById('iKwh').value)||0;
+  var costo=parseFloat(document.getElementById('iCosto').value)||0;
 
-  var cFV  = kwp>0 ? Math.min(kwp*T_KWP, MC_FV)  : 0;
-  var cACC = kwh>0 ? Math.min(kwh*T_KWH, MC_ACC) : 0;
-  var cTOT = cFV + cACC;
+  var cFV =kwp>0?Math.min(kwp*T_KWP,MC_FV):0;
+  var cACC=kwh>0?Math.min(kwh*T_KWH,MC_ACC):0;
+  var cTOT=cFV+cACC;
 
-  out('oFV',   kwp>0 ? euro(cFV)  : '€ —');
-  out('oACC',  kwh>0 ? euro(cACC) : '€ —');
-  out('oTOTc', (kwp>0||kwh>0) ? euro(cTOT) : '€ —');
+  out('oFV',  kwp>0?euro(cFV)  :'€ —');
+  out('oACC', kwh>0?euro(cACC) :'€ —');
+  out('oTOTc',(kwp>0||kwh>0)?euro(cTOT):'€ —');
 
   if(costo>0){
-    var dopoC = Math.max(0, costo-cTOT);
-    var det   = dopoC/2;
-    var netto = dopoC/2;
-    var risp  = costo-netto;
-    var perc  = (risp/costo*100).toFixed(1);
-
-    out('oCosto', euro(costo));
-    out('oDopoC', euro(dopoC));
-    out('oDet',   euro(det));
-    out('oNetto', euro(netto));
-    out('oSub',   'Risparmio effettivo: '+perc+'% sul costo iniziale');
-    out('oRisp',  euro(risp));
-    out('oPerc',  perc+'%');
-    out('oAnno',  euro(det/10)+'/a');
-
+    var dopoC=Math.max(0,costo-cTOT);
+    var det  =dopoC/2;
+    var netto=dopoC/2;
+    var risp =costo-netto;
+    var perc =(risp/costo*100).toFixed(1);
+    out('oCosto',euro(costo));
+    out('oDopoC',euro(dopoC));
+    out('oDet',  euro(det));
+    out('oNetto',euro(netto));
+    out('oSub','Risparmio effettivo: '+perc+'% sul costo iniziale');
+    out('oRisp', euro(risp));
+    out('oPerc', perc+'%');
+    out('oAnno', euro(det/10)+'/a');
     window._d={kwp:kwp,kwh:kwh,costo:costo,cFV:cFV,cACC:cACC,cTOT:cTOT,dopoC:dopoC,det:det,netto:netto,risp:risp,perc:perc};
-    calcolaAnalisi(kwp, kwh, netto, det);
+    calcolaAnalisi(kwp,kwh,netto,det);
   } else {
     ['oCosto','oDopoC','oDet'].forEach(function(id){out(id,'€ —');});
     out('oNetto','€ —');
     out('oSub','Inserisci il costo totale per completare il calcolo');
-    out('oRisp','—'); out('oPerc','—'); out('oAnno','—');
+    out('oRisp','—');out('oPerc','—');out('oAnno','—');
     window._d=null;
-    document.getElementById('cardAnalisi').style.display='none';
+    var ca=document.getElementById('cardAnalisi');if(ca)ca.style.display='none';
   }
 }
 
-// ── ANALISI ENERGETICA AVANZATA ──
-// PUN Index GME medio feb-mar 2026 (fonte: GME / Switcho)
-var PUN_MEDIO   = 0.1144;   // €/kWh (media feb-mar 2026)
-var PUN_MAGG    = PUN_MEDIO * 1.30;  // +30% = 0.1487 €/kWh
-var PROD_KWP    = 1150;     // kWh/kWp/anno (media FVG)
-var GSE_PREZZO  = 0.09;     // €/kWh ritiro dedicato GSE (indicativo)
-var AUMENTO_MP  = 0.03;     // +3%/anno materia prima
-
-function fmt3(n){ return (n<0?'-':'')+'€ '+Math.abs(Math.round(n)).toLocaleString('it-IT'); }
-function pct(n){ return (n*100).toFixed(1)+'%'; }
-
-function calcolaAnalisi(kwp, kwh_batt, nettoImpianto, detTot) {
-  var bollEuro  = parseFloat(document.getElementById('iBollEuro').value)    || 0;
-  var kwh_ann   = parseFloat(document.getElementById('iBollKwh').value)     || 0;
-  var kwh_fatt  = parseFloat(document.getElementById('iBollKwhFatt').value) || 0;
-
-  var card = document.getElementById('cardAnalisi');
-
-  // Leggi moltiplicatore da radio
-  var rMens = document.getElementById('rMensile');
-  var moltip = (rMens && rMens.checked) ? 12 : 6;
-  var bollAnnua = bollEuro * moltip;
-
-  // Mostra label bolletta annua
-  var lblBoll = document.getElementById('bollAnnuaLabel');
-  if(lblBoll && bollEuro > 0) {
-    lblBoll.textContent = '↳ Equivale a € ' + Math.round(bollAnnua).toLocaleString('it-IT') + ' annui (' + (moltip===12?'12 bollette mensili':'6 bollette bimestrali') + ')';
-  }
-
-  if(bollAnnua<=0) {
-    card.style.display='none'; return;
-  }
+// ── ANALISI 10 ANNI ──
+function calcolaAnalisi(kwp,kwh_batt,nettoImpianto,detTot){
+  var bollInput=parseFloat(document.getElementById('iBollEuro').value)||0;
+  var kwh_ann  =parseFloat(document.getElementById('iBollKwh').value)||0;
+  var kwh_fatt =parseFloat(document.getElementById('iBollKwhFatt').value)||0;
+  var card=document.getElementById('cardAnalisi');
+  var rMens=document.getElementById('rMensile');
+  var moltip=(rMens&&rMens.checked)?12:6;
+  var bollAnnua=bollInput*moltip;
+  var lbl=document.getElementById('bollAnnuaLabel');
+  if(lbl&&bollInput>0)
+    lbl.textContent='↳ € '+Math.round(bollAnnua).toLocaleString('it-IT')+' annui ('+(moltip===12?'12 mensili':'6 bimestrali')+')';
+  if(bollAnnua<=0){card.style.display='none';return;}
   card.style.display='block';
-
-  // Usa bolletta annualizzata per tutti i calcoli
-  bollEuro = bollAnnua;
-
-  // Stima kwh se non inseriti
-  var prezzoMedio = 0.25; // €/kWh medio Italia 2026
-  if(kwh_fatt <= 0) kwh_fatt = Math.round(bollEuro / prezzoMedio);
-  if(kwh_ann  <= 0) kwh_ann  = kwh_fatt;
-
-  // ── PARAMETRI BASE ──
-  var costo_kwh    = bollEuro / kwh_fatt;                     // €/kWh da bolletta
-  var perc_mp      = Math.min(PUN_MAGG / costo_kwh, 0.65);   // incidenza materia prima (max 65%)
-  var quota_fissa  = bollEuro * (1 - perc_mp);               // €/anno costo fisso (rete, tasse, ecc.)
-  var quota_var    = bollEuro * perc_mp;                      // €/anno materia prima
-
-  // ── PRODUZIONE FV ──
-  var prod_annua   = kwp * PROD_KWP;                         // kWh/anno prodotti
-
-  // Stima autoconsumo: base 40% + contributo batteria
-  var base_auto    = 0.40;
-  var extra_auto   = kwh_batt > 0 ? Math.min(kwh_batt * 0.80 * 365 / prod_annua, 0.45) : 0;
-  var fraz_auto    = Math.min(base_auto + extra_auto, 0.92);
-  var kwh_auto     = Math.min(prod_annua * fraz_auto, kwh_ann);  // consumo coperto da FV
-  var kwh_rete     = Math.max(0, kwh_ann - kwh_auto);            // residuo da rete
-  var kwh_immessi  = Math.max(0, prod_annua - kwh_auto);         // immesso in rete/GSE
-
-  // Quota fissa proporzionale al residuo da rete
-  var fraz_rete    = kwh_ann > 0 ? kwh_rete / kwh_ann : 0;
-  var qfissa_con   = quota_fissa * fraz_rete;                   // quota fissa residua con FV
-
-  // ── BOX PARAMETRI ──
-  var bp = document.getElementById('boxParam');
-  bp.innerHTML =
-    '<div class="pbox"><div class="pbox-lbl">Costo/kWh bolletta</div><div class="pbox-val">'+costo_kwh.toFixed(4)+' €</div><div class="pbox-sub">'+fmt3(bollEuro)+' ÷ '+kwh_fatt.toLocaleString('it-IT')+' kWh</div></div>'+
-    '<div class="pbox"><div class="pbox-lbl">PUN GME +30% (feb-mar&nbsp;2026)</div><div class="pbox-val">'+PUN_MAGG.toFixed(4)+' €/kWh</div><div class="pbox-sub">PUN medio: '+PUN_MEDIO.toFixed(4)+' €/kWh</div></div>'+
-    '<div class="pbox"><div class="pbox-lbl">Incidenza materia prima</div><div class="pbox-val">'+pct(perc_mp)+'</div><div class="pbox-sub">'+fmt3(quota_var)+'/anno su bolletta</div></div>'+
-    '<div class="pbox"><div class="pbox-lbl">Produzione FV stimata</div><div class="pbox-val">'+Math.round(prod_annua).toLocaleString('it-IT')+' kWh/a</div><div class="pbox-sub">Autoconsumo: '+pct(fraz_auto)+' &bull; Immissione: '+Math.round(kwh_immessi).toLocaleString('it-IT')+' kWh</div></div>';
-
-  // ── TABELLA 10 ANNI ──
-  var tbody = document.getElementById('tBodyA');
-  var tfoot = document.getElementById('tFootA');
-  tbody.innerHTML = '';
-
-  var totSenza=0, totCon=0, totGSE=0, totRisp=0;
-  var detAnnua = detTot / 10;
-
-  for(var a=1; a<=10; a++){
-    var mult      = Math.pow(1+AUMENTO_MP, a-1);
-    // SENZA FV: quota fissa + materia prima crescente
-    var spesaSenza = quota_fissa + quota_var * mult;
-
-    // CON FV: quota fissa ridotta (proporzionale residuo rete) + materia prima residua crescente
-    var spesaCon   = qfissa_con + (quota_var * fraz_rete) * mult;
-
-    // Ricavo GSE: kWh immessi * prezzo PUN+30% crescente
-    var ricavoGSE  = kwh_immessi * PUN_MAGG * mult;
-
-    // Costo netto con impianto (senza contare ancora l'investimento)
-    var nettoConAnno = spesaCon - ricavoGSE;
-
-    // Risparmio anno = spesaSenza - nettoConAnno - detrazione fiscale anno
-    var rispAnno   = spesaSenza - nettoConAnno - (a<=10 ? detAnnua : 0);
-
-    totSenza += spesaSenza;
-    totCon   += nettoConAnno;
-    totGSE   += ricavoGSE;
-    totRisp  += rispAnno;
-
-    var bgRow = a%2===0 ? 'rgba(255,255,255,.02)' : 'transparent';
-    var rColor = rispAnno>=0 ? 'var(--green)' : '#ff7a5c';
-    var tr = document.createElement('tr');
-    tr.style.background = bgRow;
-    tr.innerHTML =
-      '<td style="padding:6px 5px;color:var(--text);font-weight:600">'+a+'º</td>'+
-      '<td style="padding:6px 5px;text-align:right;color:#ff7a5c;font-family:Rajdhani,sans-serif;font-weight:700">'+fmt3(spesaSenza)+'</td>'+
-      '<td style="padding:6px 5px;text-align:right;color:var(--blue);font-family:Rajdhani,sans-serif;font-weight:700">'+fmt3(spesaCon)+'</td>'+
-      '<td style="padding:6px 5px;text-align:right;color:#2ecc8a;font-family:Rajdhani,sans-serif;font-weight:700">+'+fmt3(ricavoGSE)+'</td>'+
-      '<td style="padding:6px 5px;text-align:right;color:'+rColor+';font-family:Rajdhani,sans-serif;font-weight:700">'+(rispAnno>=0?'+':'')+fmt3(rispAnno)+'</td>';
-    tbody.appendChild(tr);
+  if(kwh_fatt<=0)kwh_fatt=Math.round(bollAnnua/0.25);
+  if(kwh_ann<=0)kwh_ann=kwh_fatt;
+  var costo_kwh=bollAnnua/kwh_fatt;
+  var perc_mp=Math.min(PUN_MAGG/costo_kwh,0.65);
+  var quota_fissa=bollAnnua*(1-perc_mp);
+  var quota_var=bollAnnua*perc_mp;
+  var prod_annua=kwp*PROD_KWP;
+  var fraz_auto=Math.min(0.40+(kwh_batt>0?Math.min(kwh_batt*0.80*365/prod_annua,0.45):0),0.92);
+  var kwh_auto=Math.min(prod_annua*fraz_auto,kwh_ann);
+  var kwh_rete=Math.max(0,kwh_ann-kwh_auto);
+  var kwh_immessi=Math.max(0,prod_annua-kwh_auto);
+  var fraz_rete=kwh_ann>0?kwh_rete/kwh_ann:0;
+  var qfissa_con=quota_fissa*fraz_rete;
+  var detAnnua=detTot/10;
+  var totSenza=0,totCon=0;
+  for(var a=1;a<=10;a++){
+    var mult=Math.pow(1+AUMENTO_MP,a-1);
+    totSenza+=quota_fissa+quota_var*mult;
+    totCon+=(qfissa_con+(quota_var*fraz_rete)*mult)-(kwh_immessi*PUN_MAGG*mult);
   }
-
-  // Totale con investimento incluso
-  var totConInvestimento = totCon + nettoImpianto;
-  var totRispFinale      = totSenza - totConInvestimento;
-
-  tfoot.innerHTML =
-    '<tr style="background:rgba(46,204,138,.08)">' +
-    '<td style="padding:8px 5px;font-family:Rajdhani,sans-serif;font-weight:700;color:var(--text);font-size:.9rem">TOT 10 ANNI</td>'+
-    '<td style="padding:8px 5px;text-align:right;font-family:Rajdhani,sans-serif;font-weight:700;color:#ff7a5c;font-size:.95rem">'+fmt3(totSenza)+'</td>'+
-    '<td style="padding:8px 5px;text-align:right;font-family:Rajdhani,sans-serif;font-weight:700;color:var(--blue);font-size:.95rem">'+fmt3(totConInvestimento)+'*</td>'+
-    '<td style="padding:8px 5px;text-align:right;font-family:Rajdhani,sans-serif;font-weight:700;color:#2ecc8a;font-size:.95rem">+'+fmt3(totGSE)+'</td>'+
-    '<td style="padding:8px 5px;text-align:right;font-family:Rajdhani,sans-serif;font-weight:700;color:var(--green);font-size:1rem">'+(totRispFinale>=0?'+':'')+fmt3(totRispFinale)+'</td>'+
-    '</tr>';
-
-  // NOTE
-  document.getElementById('analisiNote').innerHTML =
-    '<strong>ⓘ Metodologia di calcolo:</strong><br>'+
-    '• <strong>Costo/kWh bolletta:</strong> Totale bolletta attuale ÷ kWh fatturati<br>'+
-    '• <strong>Materia prima:</strong> PUN Index GME medio feb-mar 2026 ('+PUN_MEDIO.toFixed(4)+' €/kWh) maggiorato del 30% &rarr; '+PUN_MAGG.toFixed(4)+' €/kWh = '+pct(perc_mp)+' della bolletta. Cresce +3%/anno.<br>'+
-    '• <strong>Quota fissa</strong> (trasporto, oneri, tasse): '+pct(1-perc_mp)+' della bolletta, invariata nel tempo<br>'+
-    '• <strong>Produzione FV:</strong> '+kwp+' kWp × 1.150 kWh/kWp/anno = '+Math.round(prod_annua).toLocaleString('it-IT')+' kWh/anno (media FVG)<br>'+
-    '• <strong>Autoconsumo:</strong> '+pct(fraz_auto)+' della produzione (base 40%'+(kwh_batt>0?', +batteria '+kwh_batt+' kWh':'')+') &rarr; '+Math.round(kwh_auto).toLocaleString('it-IT')+' kWh autoconsumati<br>'+
-    '• <strong>Residuo da rete:</strong> '+Math.round(kwh_rete).toLocaleString('it-IT')+' kWh/anno; <strong>Immissione GSE:</strong> '+Math.round(kwh_immessi).toLocaleString('it-IT')+' kWh/anno a '+PUN_MAGG.toFixed(4)+' €/kWh (cresce col mercato)<br>'+
-    '• <strong>Detrazione fiscale:</strong> '+fmt3(detTot/10)+'/anno per 10 anni inclusa nel risparmio<br>'+
-    '• * Totale "Con FV" include il <strong>costo reale netto impianto '+fmt3(nettoImpianto)+'</strong> + spesa energetica residua 10 anni<br>'+
-    '<span style="color:#ff9966">⚠ Valori indicativi. Produzione reale dipende da esposizione, ombreggiature, degrado pannelli.</span>';
+  var totConInvest=totCon+nettoImpianto;
+  var totRisp=totSenza-totConInvest;
+  var cumS=0,cumC=nettoImpianto,payback=-1;
+  for(var a=1;a<=25;a++){
+    var mult=Math.pow(1+AUMENTO_MP,a-1);
+    cumS+=quota_fissa+quota_var*mult;
+    cumC+=(qfissa_con+(quota_var*fraz_rete)*mult)-(kwh_immessi*PUN_MAGG*mult)-(a<=10?detAnnua:0);
+    if(payback<0&&cumC<=cumS){payback=a;break;}
+  }
+  // BoxParam
+  var bp=document.getElementById('boxParam');
+  if(bp)bp.innerHTML=
+    '<div class="pbox"><div class="pbox-lbl">Costo/kWh bolletta</div><div class="pbox-val">'+costo_kwh.toFixed(4)+' €</div><div class="pbox-sub">'+fmt3(bollAnnua)+'/anno</div></div>'+
+    '<div class="pbox"><div class="pbox-lbl">PUN GME +30%</div><div class="pbox-val">'+PUN_MAGG.toFixed(4)+' €/kWh</div><div class="pbox-sub">base: '+PUN_MEDIO.toFixed(4)+'</div></div>'+
+    '<div class="pbox"><div class="pbox-lbl">Incidenza mat. prima</div><div class="pbox-val">'+pct(perc_mp)+'</div><div class="pbox-sub">'+fmt3(quota_var)+'/anno</div></div>'+
+    '<div class="pbox"><div class="pbox-lbl">Produzione FV</div><div class="pbox-val">'+Math.round(prod_annua).toLocaleString('it-IT')+' kWh/a</div><div class="pbox-sub">Autoconsumo '+pct(fraz_auto)+'</div></div>';
+  // 4 box totali
+  var pbTxt=payback>0?payback+' anni':'oltre 25 anni';
+  var pbCol=payback>0&&payback<=12?'#1a6a3a':(payback<=18?'#886600':'#cc3300');
+  var colR=totRisp>=0?'#1a6a3a':'#cc6600';
+  var rf=document.getElementById('riepilogoFinale');
+  if(rf)rf.innerHTML=
+    '<div style="display:flex;flex-direction:column;gap:9px">'+
+    '<div style="background:rgba(255,90,60,.08);border:1px solid rgba(255,90,60,.3);border-left:4px solid #ff5a3c;border-radius:8px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">'+
+      '<div><div style="font-size:.7rem;color:#ff7a5c;text-transform:uppercase;letter-spacing:1px;font-family:Rajdhani,sans-serif;font-weight:700;margin-bottom:2px">❌ Senza impianto — 10 anni</div>'+
+      '<div style="font-size:.8rem;color:var(--muted)">Spesa bolletta con +3%/anno:</div></div>'+
+      '<div style="font-family:Rajdhani,sans-serif;font-size:1.8rem;font-weight:700;color:#ff5a3c">'+fmt3(totSenza)+'</div></div>'+
+    '<div style="background:rgba(46,204,138,.08);border:1px solid rgba(46,204,138,.25);border-left:4px solid #2ecc8a;border-radius:8px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">'+
+      '<div><div style="font-size:.7rem;color:#2ecc8a;text-transform:uppercase;letter-spacing:1px;font-family:Rajdhani,sans-serif;font-weight:700;margin-bottom:2px">✅ Con impianto FV — 10 anni</div>'+
+      '<div style="font-size:.8rem;color:var(--muted)">Costo totale (energia + impianto '+fmt3(nettoImpianto)+'):</div></div>'+
+      '<div style="font-family:Rajdhani,sans-serif;font-size:1.8rem;font-weight:700;color:#2ecc8a">'+fmt3(totConInvest)+'</div></div>'+
+    '<div style="background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.28);border-left:4px solid var(--gold);border-radius:8px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">'+
+      '<div><div style="font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:1px;font-family:Rajdhani,sans-serif;font-weight:700;margin-bottom:2px">'+(totRisp>=0?'✅':'⚠️')+' Risparmio netto 10 anni</div>'+
+      '<div style="font-size:.8rem;color:var(--muted)">'+(totRisp>=0?'Risparmi:':'Attenzione:')+'</div></div>'+
+      '<div style="font-family:Rajdhani,sans-serif;font-size:1.8rem;font-weight:700;color:'+colR+'">'+(totRisp>=0?'+':'')+fmt3(totRisp)+'</div></div>'+
+    '<div style="background:rgba(77,184,255,.08);border:1px solid rgba(77,184,255,.25);border-left:4px solid var(--blue);border-radius:8px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">'+
+      '<div><div style="font-size:.7rem;color:var(--blue);text-transform:uppercase;letter-spacing:1px;font-family:Rajdhani,sans-serif;font-weight:700;margin-bottom:2px">⏱ Ammortamento impianto</div>'+
+      '<div style="font-size:.8rem;color:var(--muted)">Si ripaga completamente in circa:</div></div>'+
+      '<div style="font-family:Rajdhani,sans-serif;font-size:1.8rem;font-weight:700;color:'+pbCol+'">'+pbTxt+'</div></div>'+
+    '</div>';
+  var an=document.getElementById('analisiNote');
+  if(an)an.innerHTML=
+    '<strong>ⓘ Come calcoliamo:</strong> Bolletta annua '+fmt3(bollAnnua)+
+    ' • Mat. prima '+pct(perc_mp)+' (+3%/anno) • Quota fissa '+pct(1-perc_mp)+' invariata'+
+    ' • FV '+Math.round(prod_annua).toLocaleString('it-IT')+' kWh/anno, autoconsumo '+pct(fraz_auto)+
+    ' • Detrazione '+fmt3(detTot)+' totale.'+
+    ' <span style="color:#ff9966">⚠ Stime indicative.</span>';
 }
-</script>
-<div id="driveModal" style="display:none"></div>
-<iframe name="drvFrame" style="display:none"></iframe>
-<form id="drvForm" style="display:none"><input type="hidden" name="name" id="drvName"><input type="hidden" name="data" id="drvData"></form>
-</body>
-</htmlfunction generaPDF(){
+
+// ── GENERA PDF (stampa) ──
+function generaPDF(){
   document.body.classList.add('stampa');
   var btns=document.querySelector('.btns');
   if(btns)btns.style.display='none';
@@ -768,4 +572,57 @@ function calcolaAnalisi(kwp, kwh_batt, nettoImpianto, detTot) {
   },200);
 }
 
->
+// ── WHATSAPP (invia al numero del cliente) ──
+function condividiWA(){
+  var d=window._d;
+  var nome=document.getElementById('iNome').value||'Cliente';
+  var cell=document.getElementById('iCell').value.replace(/\s+/g,'');
+  if(!cell){alert('Inserire il numero di cellulare del cliente nei Dati Cliente.');return;}
+  var msg;
+  if(d){
+    msg='PREVENTIVO INCENTIVI FVG 2026\nGentile '+nome+',\n\n'+
+      'Fotovoltaico: '+d.kwp+' kWp  Contributo: \u20ac '+Math.round(d.cFV).toLocaleString('it-IT')+'\n'+
+      'Accumulo: '+d.kwh+' kWh  Contributo: \u20ac '+Math.round(d.cACC).toLocaleString('it-IT')+'\n'+
+      'Contributo Totale FVG: \u20ac '+Math.round(d.cTOT).toLocaleString('it-IT')+'\n\n'+
+      'Costo totale impianto: \u20ac '+Math.round(d.costo).toLocaleString('it-IT')+'\n'+
+      'Costo dopo contributo: \u20ac '+Math.round(d.dopoC).toLocaleString('it-IT')+'\n'+
+      'Detrazione 50% (10 anni): \u20ac '+Math.round(d.det).toLocaleString('it-IT')+'\n'+
+      'COSTO REALE NETTO: \u20ac '+Math.round(d.netto).toLocaleString('it-IT')+'\n'+
+      'Risparmio effettivo: '+d.perc+'%\n\n'+
+      'SMS Consulenze | +39 338 7327000';
+  }else{
+    msg='SMS Consulenze - Incentivi FVG 2026\n+39 338 7327000';
+  }
+  var num=cell.startsWith('+')?cell.slice(1):'39'+cell;
+  window.open('https://wa.me/'+num+'?text='+encodeURIComponent(msg),'_blank');
+}
+
+// ── EMAIL ──
+function apriEmail(){
+  var d=window._d;
+  var nome=document.getElementById('iNome').value||'Cliente';
+  var em=document.getElementById('iEmail').value||'';
+  var subj=encodeURIComponent('Preventivo Incentivi FVG 2026 - '+nome);
+  var body;
+  if(d){
+    body=encodeURIComponent(
+      'Gentile '+nome+',\n\n'+
+      'Riepilogo incentivi FVG 2026:\n\n'+
+      'Contributo FV: € '+Math.round(d.cFV).toLocaleString('it-IT')+'\n'+
+      'Contributo Accumulo: € '+Math.round(d.cACC).toLocaleString('it-IT')+'\n'+
+      'Contributo Totale: € '+Math.round(d.cTOT).toLocaleString('it-IT')+'\n'+
+      'Costo totale impianto: € '+Math.round(d.costo).toLocaleString('it-IT')+'\n'+
+      'Costo dopo contributo: € '+Math.round(d.dopoC).toLocaleString('it-IT')+'\n'+
+      'Detrazione 50%: € '+Math.round(d.det).toLocaleString('it-IT')+'\n'+
+      'COSTO REALE NETTO: € '+Math.round(d.netto).toLocaleString('it-IT')+'\n'+
+      'Risparmio: '+d.perc+'%\n\n'+
+      'Cordiali saluti,\nMauro Scian - SMS Consulenze\n+39 338 7327000\nPordenone, FVG'
+    );
+  }else{
+    body=encodeURIComponent('Gentile '+nome+',\n\nLa contatto per il preventivo incentivi FVG.\n\nMauro Scian - SMS Consulenze');
+  }
+  window.location.href='mailto:'+em+'?subject='+subj+'&body='+body;
+}
+</script>
+</body>
+</html>
